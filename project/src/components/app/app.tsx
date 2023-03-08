@@ -1,5 +1,5 @@
-import Main from "../../pages/main/main";
-import Header from "../header/header";
+import Main from '../../pages/main/main';
+import Header from '../header/header';
 
 type AppSceenProps = {
   offersDisplayCount: number;
