@@ -3,7 +3,7 @@ import Header from "../../components/header/header";
 function Room(): JSX.Element {
   return (
     <div className="page">
-      <Header />
+      <Header isAuth />
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
