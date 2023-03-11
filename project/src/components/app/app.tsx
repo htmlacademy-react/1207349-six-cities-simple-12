@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';  
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
@@ -13,23 +13,22 @@ function App({offersDisplayCount}: AppSceenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route 
+        <Route
           path = {AppRoute.Root}
-          element = {<Main offersDisplayCount = {offersDisplayCount} />} 
+          element = {<Main offersDisplayCount = {offersDisplayCount} />}
         />
-        <Route 
+        <Route
           path = {AppRoute.Login}
           element = {<Login />}
         />
-        <Route 
+        <Route
           path = {AppRoute.Offer}
           element = {<Room />}
         />
-        <Route 
+        <Route
           path = '*'
           element = {<NotFound />}
         />
-   
       </Routes>
     </BrowserRouter>
   );
