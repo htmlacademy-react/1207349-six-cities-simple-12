@@ -1,11 +1,13 @@
+import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
-import Card from '../../components/card/card';
+import Offers from '../../components/offers/offers';
 
 type MainProps = {
   offersDisplayCount: number;
+  offers: Offer[];
 }
 
-function Main({offersDisplayCount}: MainProps): JSX.Element {
+function Main({offersDisplayCount, offers}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header isAuth />
