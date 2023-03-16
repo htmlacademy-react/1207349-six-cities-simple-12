@@ -14,20 +14,20 @@ function App({offersDisplayCount}: AppSceenProps): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route
-          path = {AppRoute.Root}
-          element = {<Main offersDisplayCount = {offersDisplayCount} />}
+          path={AppRoute.Root}
+          element={<Main offersDisplayCount={offersDisplayCount} />}
         />
         <Route
-          path = {AppRoute.Login}
-          element = {<Login />}
+          path={AppRoute.Login}
+          element={<Login />}
         />
         <Route
-          path = {AppRoute.Offer}
-          element = {<Room />}
+          path={AppRoute.Offer}
+          element={<Room />}
         />
         <Route
-          path = '*'
-          element = {<NotFound />}
+          path='*'
+          element={<NotFound />}
         />
       </Routes>
     </BrowserRouter>
