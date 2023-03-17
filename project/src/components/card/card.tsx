@@ -2,12 +2,14 @@ import { Offer } from '../../types/offer';
 
 type CardProps = {
   offer: Offer;
+  setActiveCard: (id: number | null) => void;
 }
 
-function Card({offer}: CardProps): JSX.Element {
-  const {images, title, isPremium, type, rating, price} = offer;
+function Card({offer, setActiveCard}: CardProps): JSX.Element {
+  const {id, images, title, isPremium, type, rating, price} = offer;
+
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" onMouseOver={() => setActiveCard(id)}>
       {isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
