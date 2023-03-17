@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
+import { AppRoute } from '../../const';
 
 type CardProps = {
   offer: Offer;
@@ -15,9 +17,9 @@ function Card({offer, setActiveCard}: CardProps): JSX.Element {
           <span>Premium</span>
         </div> }
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="/">
+        <Link to={AppRoute.Offer.replace(':id', id.toString())}>
           <img className="place-card__image" src={images[0]} width="260" height="200" alt={title} />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -25,7 +27,6 @@ function Card({offer, setActiveCard}: CardProps): JSX.Element {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -34,7 +35,9 @@ function Card({offer, setActiveCard}: CardProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="/">{title}</a>
+          <Link to={AppRoute.Offer.replace(':id', id.toString())}>
+            {title}
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
