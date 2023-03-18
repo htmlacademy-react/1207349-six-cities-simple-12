@@ -1,4 +1,6 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
+import { RATING_LABELS } from '../../const';
+import RatingInput from '../rating-input/rating-input';
 
 function ReviewForm(): JSX.Element {
   const [formData, setFormData] = useState({
@@ -19,30 +21,7 @@ function ReviewForm(): JSX.Element {
     <form className="reviews__form form" action="#" method="post" onSubmit={formSubmitHandle}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {['perfect', 'good', 'not bad', 'badly', 'terribly'].map((title, i, arr) => {
-          const count = arr.length - i;
-          return (
-            <React.Fragment key={`${title}-${count}`}>
-              <input
-                onChange={fieldChangeHandle}
-                className="form__rating-input visually-hidden"
-                name="rating"
-                value={count}
-                id={`${count}-stars`}
-                type="radio"
-              />
-              <label
-                htmlFor={`${count}-stars`}
-                className="reviews__rating-label form__rating-label"
-                title={title}
-              >
-                <svg className="form__star-image" width="37" height="33">
-                  <use xlinkHref="#icon-star"></use>
-                </svg>
-              </label>
-            </React.Fragment>
-          );
-        })}
+        {RATING_LABELS.map((title, i, arr) => <RatingInput key={title} count={arr.length - i} title={title} fieldChangeHandle={fieldChangeHandle} />)}
       </div>
       <textarea
         onChange={fieldChangeHandle}
