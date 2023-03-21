@@ -1,11 +1,13 @@
+import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
-import Card from '../../components/card/card';
+import Offers from '../../components/offers/offers';
 
 type MainProps = {
   offersDisplayCount: number;
+  offers: Offer[];
 }
 
-function Main({offersDisplayCount}: MainProps): JSX.Element {
+function Main({offersDisplayCount, offers}: MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Header isAuth />
@@ -67,9 +69,7 @@ function Main({offersDisplayCount}: MainProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {[...Array(offersDisplayCount).keys()].map((i) => <Card key={i} />)}
-              </div>
+              <Offers offers={offers.slice(0, offersDisplayCount)} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>

@@ -3,3 +3,5 @@ export enum AppRoute {
   Login = '/login',
   Offer = '/offer/:id',
 }
+
+export const RATING_LABELS: string[] = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
