@@ -27,7 +27,7 @@ export const offers: Offer[] = [
       isPro: true,
     },
     reviews: [1, 2],
-    coordinates: [55.751857, 37.525288],
+    coordinates: [52.3909553943508, 4.85309666406198],
     city: 'Amsterdam',
   }, {
     id: 2,
@@ -55,7 +55,7 @@ export const offers: Offer[] = [
       isPro: false,
     },
     reviews: [1, 2],
-    coordinates: [55.751857, 37.525488],
+    coordinates: [52.3609553943508, 4.85309666406198],
     city: 'Amsterdam',
   }, {
     id: 3,
@@ -83,7 +83,7 @@ export const offers: Offer[] = [
       isPro: false,
     },
     reviews: [1, 2],
-    coordinates: [55.711857, 37.525388],
+    coordinates: [52.3909553943508, 4.929309666406198],
     city: 'Amsterdam',
   }, {
     id: 4,
@@ -111,7 +111,7 @@ export const offers: Offer[] = [
       isPro: true,
     },
     reviews: [1],
-    coordinates: [55.752857, 37.525188],
+    coordinates: [52.3809553943508, 4.939309666406198],
     city: 'Amsterdam',
   }
 ];
