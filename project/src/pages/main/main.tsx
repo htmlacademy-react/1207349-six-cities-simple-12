@@ -1,13 +1,19 @@
 import { Offer } from '../../types/offer';
+import { City } from '../../types/city';
 import Header from '../../components/header/header';
 import Offers from '../../components/offers/offers';
+import Map from '../../components/map/map';
+import { useState } from 'react';
 
 type MainProps = {
   offersDisplayCount: number;
   offers: Offer[];
+  cities: City[];
 }
 
-function Main({offersDisplayCount, offers}: MainProps): JSX.Element {
+function Main({offersDisplayCount, offers, cities}: MainProps): JSX.Element {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
   return (
     <div className="page page--gray page--main">
       <Header isAuth />
@@ -69,10 +75,10 @@ function Main({offersDisplayCount, offers}: MainProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <Offers offers={offers.slice(0, offersDisplayCount)} />
+              <Offers offers={offers.slice(0, offersDisplayCount)} setActiveCard={setActiveCard} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map city={cities[3]} offers={offers} activeCard={activeCard} />
             </div>
           </div>
         </div>
