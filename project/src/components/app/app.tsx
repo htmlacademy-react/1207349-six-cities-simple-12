@@ -35,7 +35,13 @@ function App({offersDisplayCount, offers, cities, reviews}: AppSceenProps): JSX.
         />
         <Route
           path={AppRoute.Offer}
-          element={<Room reviews={reviews} />}
+          element={
+            <Room
+              offers={offers}
+              cities={cities}
+              reviews={reviews}
+            />
+          }
         />
         <Route
           path='*'
