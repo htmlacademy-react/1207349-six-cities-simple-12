@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoute } from '../../const';
 import { Offer } from '../../types/offer';
 import { City } from '../../types/city';
+import { Review } from '../../types/review';
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
 import Room from '../../pages/room/room';
@@ -11,9 +12,10 @@ type AppSceenProps = {
   offersDisplayCount: number;
   offers: Offer[];
   cities: City[];
+  reviews: Review[];
 }
 
-function App({offersDisplayCount, offers, cities}: AppSceenProps): JSX.Element {
+function App({offersDisplayCount, offers, cities, reviews}: AppSceenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -33,7 +35,7 @@ function App({offersDisplayCount, offers, cities}: AppSceenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Offer}
-          element={<Room />}
+          element={<Room reviews={reviews} />}
         />
         <Route
           path='*'
