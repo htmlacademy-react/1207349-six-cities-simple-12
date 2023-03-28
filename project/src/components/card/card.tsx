@@ -4,19 +4,20 @@ import { AppRoute } from '../../const';
 
 type CardProps = {
   offer: Offer;
+  cardType: string;
   setActiveCard: (id: number | null) => void;
 }
 
-function Card({offer, setActiveCard}: CardProps): JSX.Element {
+function Card({offer, cardType, setActiveCard}: CardProps): JSX.Element {
   const {id, images, title, isPremium, type, rating, price} = offer;
 
   return (
-    <article className="cities__card place-card" onMouseOver={() => setActiveCard(id)}>
+    <article className={`${cardType}__card place-card`} onMouseOver={() => setActiveCard(id)}>
       {isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
         </div> }
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${cardType}__image-wrapper place-card__image-wrapper`}>
         <Link to={AppRoute.Offer.replace(':id', id.toString())}>
           <img className="place-card__image" src={images[0]} width="260" height="200" alt={title} />
         </Link>

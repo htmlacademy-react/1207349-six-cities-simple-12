@@ -3,13 +3,15 @@ import Card from '../card/card';
 
 type OffersProps = {
   offers: Offer[];
+  className: string;
+  cardType: string;
   setActiveCard: (id: number | null) => void;
 }
 
-function Offers({offers, setActiveCard}: OffersProps): JSX.Element {
+function Offers({offers, className, cardType, setActiveCard}: OffersProps): JSX.Element {
   return (
-    <div className="cities__places-list places__list tabs__content">
-      {offers.map((offer) => <Card key={offer.id} offer={offer} setActiveCard={setActiveCard} />)}
+    <div className={className}>
+      {offers.map((offer) => <Card key={offer.id} offer={offer} cardType={cardType} setActiveCard={setActiveCard} />)}
     </div>
   );
 }

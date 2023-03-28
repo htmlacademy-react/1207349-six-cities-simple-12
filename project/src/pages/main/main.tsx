@@ -47,7 +47,7 @@ function Main({offersDisplayCount, offers, cities}: MainProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <Offers offers={offers.slice(0, offersDisplayCount)} setActiveCard={setActiveCard} />
+              <Offers offers={offers.slice(0, offersDisplayCount)} className={'cities__places-list tabs__content'} cardType={'cities'} setActiveCard={setActiveCard} />
             </section>
             <div className="cities__right-section">
               <Map city={cities[3]} offers={offers} activeCard={activeCard} className={'cities__map'} />
