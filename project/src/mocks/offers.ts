@@ -60,7 +60,7 @@ export const offers: Offer[] = [
   }, {
     id: 3,
     images: [
-      'img/studio-01.jpg',
+      'img/apartment-03.jpg',
       'img/apartment-03.jpg',
       'img/apartment-01.jpg',
       'img/room.jpg',
