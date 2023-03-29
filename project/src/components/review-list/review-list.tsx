@@ -10,7 +10,12 @@ function ReviewList({reviews}: ReviewListProps): JSX.Element {
     <>
       <h2 className="reviews__title">ReviewList &middot; <span className="reviews__amount">{reviews.length}</span></h2>
       <ul className="reviews__list">
-        {reviews.map((review) => <ReviewItem key={review.id} review={review} />)}
+        {reviews.map((review) => (
+          <ReviewItem 
+            key={review.id} 
+            review={review} 
+          />
+        ))}
       </ul>
     </>
   );
