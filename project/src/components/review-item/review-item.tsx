@@ -1,4 +1,5 @@
 import { Review } from '../../types/review';
+import { format } from 'date-fns';
 
 type ReviewItemProps = {
   review: Review;
@@ -26,8 +27,8 @@ function ReviewItem({review}:ReviewItemProps): JSX.Element {
           </div>
         </div>
         <p className="reviews__text">{textReview}</p>
-        <time className="reviews__time" dateTime={dateObj.toISOString().split('T')[0]}>
-          {dateObj.toLocaleString('en', { month: 'long', year: 'numeric' })}
+        <time className="reviews__time" dateTime={format(dateObj, 'yyyy-MM-dd')}>
+          {format(dateObj, 'MMMM yyyy')}
         </time>
       </div>
     </li>
