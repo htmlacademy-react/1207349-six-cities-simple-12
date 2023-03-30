@@ -1,5 +1,5 @@
-import { Review } from '../../types/review';
-import { Offer } from '../../types/offer';
+import { nearPlacesOffers } from '../../mocks/offers';
+import { reviews } from '../../mocks/reviews';
 import { City } from '../../types/city';
 import { useState } from 'react';
 import Header from '../../components/header/header';
@@ -9,12 +9,10 @@ import Map from '../../components/map/map';
 import Offers from '../../components/offers/offers';
 
 type RoomProps = {
-  offers: Offer[];
   cities: City[];
-  reviews: Review[];
 }
 
-function Room({offers, cities, reviews}: RoomProps): JSX.Element {
+function Room({cities}: RoomProps): JSX.Element {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
@@ -139,12 +137,12 @@ function Room({offers, cities, reviews}: RoomProps): JSX.Element {
               </section>
             </div>
           </div>
-          <Map city={cities[3]} offers={offers.slice(0, 3)} activeCard={activeCard} className={'property__map'} />
+          <Map city={cities[3]} offers={nearPlacesOffers} activeCard={activeCard} className={'property__map'} />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <Offers offers={offers.slice(0, 3)} className={'near-places__list'} cardType={'near-places'} setActiveCard={setActiveCard} />
+            <Offers offers={nearPlacesOffers} className={'near-places__list'} cardType={'near-places'} setActiveCard={setActiveCard} />
           </section>
         </div>
       </main>

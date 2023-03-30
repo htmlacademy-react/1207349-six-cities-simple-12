@@ -1,18 +1,17 @@
-import { Offer } from '../../types/offer';
 import { City } from '../../types/city';
 import Header from '../../components/header/header';
 import Offers from '../../components/offers/offers';
 import Map from '../../components/map/map';
 import { useState } from 'react';
 import TabLink from '../../components/tab-link/tab-link';
+import { offers } from '../../mocks/offers';
 
 type MainProps = {
   offersDisplayCount: number;
-  offers: Offer[];
   cities: City[];
 }
 
-function Main({offersDisplayCount, offers, cities}: MainProps): JSX.Element {
+function Main({offersDisplayCount, cities}: MainProps): JSX.Element {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
