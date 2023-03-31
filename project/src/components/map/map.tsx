@@ -9,6 +9,7 @@ type MapProps = {
   city: City;
   offers: Offer[];
   activeCard: number | null;
+  className: string;
 }
 
 const makeIcon = (iconURL: string):leaflet.Icon => leaflet.icon({
@@ -20,7 +21,7 @@ const makeIcon = (iconURL: string):leaflet.Icon => leaflet.icon({
 const defaultCustomIcon = makeIcon(URL_MARKER_DEFAULT);
 const currentCustomIcon = makeIcon(URL_MARKER_CURRENT);
 
-function Map({city, offers, activeCard}: MapProps): JSX.Element {
+function Map({city, offers, activeCard, className}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -42,7 +43,7 @@ function Map({city, offers, activeCard}: MapProps): JSX.Element {
   }, [map, offers, activeCard]);
 
   return (
-    <section className="cities__map map" ref={mapRef} />
+    <section className={`map ${className}`} ref={mapRef} />
   );
 }
 
