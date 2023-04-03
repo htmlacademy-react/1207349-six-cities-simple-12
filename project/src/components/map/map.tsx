@@ -14,8 +14,8 @@ type MapProps = {
 
 const makeIcon = (iconURL: string):leaflet.Icon => leaflet.icon({
   iconUrl: iconURL,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconSize: [27, 39],
+  iconAnchor: [27, 39],
 });
 
 const defaultCustomIcon = makeIcon(URL_MARKER_DEFAULT);
