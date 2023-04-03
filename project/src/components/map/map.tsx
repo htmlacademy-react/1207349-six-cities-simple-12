@@ -39,8 +39,10 @@ function Map({city, offers, activeCard, className}: MapProps): JSX.Element {
           })
           .addTo(map);
       });
+
+      map.setView([city.lat, city.lng], 10);
     }
-  }, [map, offers, activeCard]);
+  }, [map, offers, activeCard, city]);
 
   return (
     <section className={`map ${className}`} ref={mapRef} />
