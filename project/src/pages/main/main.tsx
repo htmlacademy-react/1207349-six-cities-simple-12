@@ -48,7 +48,7 @@ function Main(): JSX.Element {
               <Offers offers={offers} className={'cities__places-list tabs__content'} cardType={'cities'} setActiveCard={setActiveCard} />
             </section>
             <div className="cities__right-section">
-              <Map city={selectedCity} offers={offers} activeCard={activeCard} className={'cities__map'} />
+              <Map city={selectedCity} offers={offers} activeCard={activeCard} className="cities__map" />
             </div>
           </div>
         </div>

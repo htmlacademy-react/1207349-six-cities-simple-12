@@ -138,7 +138,7 @@ function Room(): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <Offers offers={nearPlacesOffers} className={'near-places__list'} cardType={'near-places'} setActiveCard={setActiveCard} />
+            <Offers offers={nearPlacesOffers} className={'near-places__list'} cardType="near-places" setActiveCard={setActiveCard} />
           </section>
         </div>
       </main>
