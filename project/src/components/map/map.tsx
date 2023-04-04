@@ -14,8 +14,8 @@ type MapProps = {
 
 const makeIcon = (iconURL: string):leaflet.Icon => leaflet.icon({
   iconUrl: iconURL,
-  iconSize: [40, 40],
-  iconAnchor: [20, 40],
+  iconSize: [27, 39],
+  iconAnchor: [27, 39],
 });
 
 const defaultCustomIcon = makeIcon(URL_MARKER_DEFAULT);
@@ -41,6 +41,12 @@ function Map({city, offers, activeCard, className}: MapProps): JSX.Element {
       });
     }
   }, [map, offers, activeCard]);
+
+  useEffect(() => {
+    if (map) {
+      map.setView([city.lat, city.lng], 10);
+    }
+  }, [map, city]);
 
   return (
     <section className={`map ${className}`} ref={mapRef} />

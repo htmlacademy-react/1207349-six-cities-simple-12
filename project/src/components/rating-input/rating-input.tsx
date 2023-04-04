@@ -3,14 +3,14 @@ import { ChangeEvent } from 'react';
 type RatingInputProps = {
   title: string;
   count: number;
-  fieldChangeHandle: (evt: ChangeEvent<HTMLInputElement>) => void;
+  fieldChangeHandler: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function RatingInput({title, count, fieldChangeHandle}: RatingInputProps): JSX.Element {
+function RatingInput({title, count, fieldChangeHandler}: RatingInputProps): JSX.Element {
   return (
     <>
       <input
-        onChange={fieldChangeHandle}
+        onChange={fieldChangeHandler}
         className="form__rating-input visually-hidden"
         name="rating"
         value={count}

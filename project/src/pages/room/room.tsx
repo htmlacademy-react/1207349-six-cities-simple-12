@@ -1,18 +1,14 @@
 import { nearPlacesOffers } from '../../mocks/offers';
 import { reviews } from '../../mocks/reviews';
-import { City } from '../../types/city';
 import { useState } from 'react';
 import Header from '../../components/header/header';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewList from '../../components/review-list/review-list';
 import Map from '../../components/map/map';
 import Offers from '../../components/offers/offers';
+import { CITIES } from '../../const';
 
-type RoomProps = {
-  cities: City[];
-}
-
-function Room({cities}: RoomProps): JSX.Element {
+function Room(): JSX.Element {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
@@ -137,7 +133,7 @@ function Room({cities}: RoomProps): JSX.Element {
               </section>
             </div>
           </div>
-          <Map city={cities[3]} offers={nearPlacesOffers} activeCard={activeCard} className={'property__map'} />
+          <Map city={CITIES[3]} offers={nearPlacesOffers} activeCard={activeCard} className={'property__map'} />
         </section>
         <div className="container">
           <section className="near-places places">
