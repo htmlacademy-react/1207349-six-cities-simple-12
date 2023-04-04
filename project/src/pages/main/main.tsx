@@ -1,4 +1,3 @@
-import { City } from '../../types/city';
 import Header from '../../components/header/header';
 import Offers from '../../components/offers/offers';
 import Map from '../../components/map/map';
@@ -11,7 +10,7 @@ function Main(): JSX.Element {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
   const selectedCity = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => state.offers.filter((offer) => offer.city === selectedCity.title));
+  const offers = useAppSelector((state) => state.offers.filter((offer) => offer.city === useAppSelector((state) => state.city.title)));
 
   return (
     <div className="page page--gray page--main">
