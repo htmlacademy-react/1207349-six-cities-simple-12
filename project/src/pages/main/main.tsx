@@ -4,8 +4,7 @@ import Offers from '../../components/offers/offers';
 import Map from '../../components/map/map';
 import { useState } from 'react';
 import TabLink from '../../components/tab-link/tab-link';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeCity } from '../../store/action';
+import { useAppSelector } from '../../hooks';
 import { CITIES } from '../../const';
 
 function Main(): JSX.Element {
@@ -13,12 +12,6 @@ function Main(): JSX.Element {
 
   const selectedCity = useAppSelector((state) => state.city);
   const offers = useAppSelector((state) => state.offers.filter((offer) => offer.city === selectedCity.title));
-
-  const dispatch = useAppDispatch();
-
-  const changeCityHandler = (city: City) => {
-    dispatch(changeCity(city));
-  };
 
   return (
     <div className="page page--gray page--main">
@@ -28,7 +21,7 @@ function Main(): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {CITIES.map((city) => <TabLink key={city.title} city={city} selectedCity={selectedCity.title} changeCityHandler={changeCityHandler} />)}
+              {CITIES.map((city) => <TabLink key={city.title} city={city} selectedCity={selectedCity.title} />)}
             </ul>
           </section>
         </div>
