@@ -13,7 +13,7 @@ function Main(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.city);
   const selectedSorting = useAppSelector((state) => state.sorting);
 
-  const offers = useAppSelector((state) => state.offers.filter((offer) => offer.city === selectedCity.title));
+  const offers = useAppSelector((state) => state.offers.filter((offer) => offer.city === state.city.title));
 
   return (
     <div className="page page--gray page--main">
