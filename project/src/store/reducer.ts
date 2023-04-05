@@ -6,7 +6,7 @@ import { offers } from '../mocks/offers';
 const initialState = {
   city: CITIES[0],
   offers: offers,
-  sorting: SORTING_OPTIONS[0],
+  sorting: SORTING_OPTIONS.pop,
 };
 
 const reducer = createReducer(initialState, (builder) => {

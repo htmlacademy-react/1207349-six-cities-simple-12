@@ -32,7 +32,7 @@ function Sorting({selectedSorting}: SortingProps): JSX.Element {
       </span>
       {isOpenSorting &&
         <ul className="places__options places__options--custom places__options--opened">
-          {SORTING_OPTIONS.map((item) => {
+          {Object.values(SORTING_OPTIONS).map((item) => {
             const activeClass = item === selectedSorting ? ' places__option--active' : '';
             const classes = `places__option${activeClass}`;
 
