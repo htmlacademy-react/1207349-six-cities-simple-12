@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAppDispatch } from '../../hooks';
-import { SORTING_OPTIONS } from '../../const';
+import { SortingOption } from '../../const';
 import { changeSorting } from '../../store/action';
 
 type SortingProps = {
@@ -16,7 +16,7 @@ function Sorting({selectedSorting}: SortingProps): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  function chooseSortHandler(sorting: string) {
+  function chooseSortHandler(sorting: SortingOption) {
     dispatch(changeSorting(sorting));
     setOpenSorting(false);
   }
@@ -32,7 +32,7 @@ function Sorting({selectedSorting}: SortingProps): JSX.Element {
       </span>
       {isOpenSorting &&
         <ul className="places__options places__options--custom places__options--opened">
-          {Object.values(SORTING_OPTIONS).map((item) => {
+          {Object.values(SortingOption).map((item) => {
             const activeClass = item === selectedSorting ? ' places__option--active' : '';
             const classes = `places__option${activeClass}`;
 
