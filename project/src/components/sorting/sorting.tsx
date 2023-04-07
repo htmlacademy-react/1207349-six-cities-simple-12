@@ -8,7 +8,7 @@ type SortingProps = {
 }
 
 function Sorting({selectedSorting}: SortingProps): JSX.Element {
-  const [isOpenSorting, setOpenSorting] = useState<boolean>(false);
+  const [isOpenSorting, setOpenSorting] = useState(false);
 
   function openSortingHandler() {
     setOpenSorting(!isOpenSorting);
@@ -36,7 +36,16 @@ function Sorting({selectedSorting}: SortingProps): JSX.Element {
             const activeClass = item === selectedSorting ? ' places__option--active' : '';
             const classes = `places__option${activeClass}`;
 
-            return <li key={item} className={classes} tabIndex={0} onClick={() => chooseSortHandler(item)}>{item}</li>;
+            return (
+              <li
+                key={item}
+                className={classes}
+                tabIndex={0}
+                onClick={() => chooseSortHandler(item)}
+              >
+                {item}
+              </li>
+            );
           })}
         </ul>}
     </form>

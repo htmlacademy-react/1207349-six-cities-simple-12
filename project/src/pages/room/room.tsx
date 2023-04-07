@@ -133,12 +133,12 @@ function Room(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map city={CITIES[3]} offers={nearPlacesOffers} activeCard={activeCard} className={'property__map'} />
+          <Map city={CITIES[3]} offers={nearPlacesOffers} activeCard={activeCard} className="property__map" />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <Offers offers={nearPlacesOffers} className={'near-places__list'} cardType="near-places" setActiveCard={setActiveCard} />
+            <Offers offers={nearPlacesOffers} className="near-places__list" cardType="near-places" setActiveCard={setActiveCard} />
           </section>
         </div>
       </main>

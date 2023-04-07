@@ -37,7 +37,7 @@ function Main(): JSX.Element {
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{offers.length} places to stay in {selectedCity.title}</b>
                 <Sorting selectedSorting={selectedSorting} />
-                <Offers offers={sortingOffers(offers, selectedSorting)} className={'cities__places-list tabs__content'} cardType={'cities'} setActiveCard={setActiveCard} />
+                <Offers offers={sortingOffers(offers, selectedSorting)} className="cities__places-list tabs__content" cardType="cities" setActiveCard={setActiveCard} />
               </section>
               <div className="cities__right-section">
                 <Map city={selectedCity} offers={offers} activeCard={activeCard} className="cities__map" />
