@@ -1,14 +1,12 @@
 import { useState } from 'react';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { SortingOption } from '../../const';
 import { changeSorting } from '../../store/action';
 
-type SortingProps = {
-  selectedSorting: string;
-}
-
-function Sorting({selectedSorting}: SortingProps): JSX.Element {
+function Sorting(): JSX.Element {
   const [isOpenSorting, setOpenSorting] = useState(false);
+
+  const selectedSorting = useAppSelector((state) => state.sorting);
 
   function openSortingHandler() {
     setOpenSorting(!isOpenSorting);
