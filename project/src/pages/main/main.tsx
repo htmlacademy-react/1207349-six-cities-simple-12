@@ -14,7 +14,7 @@ function Main(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.city);
   const selectedSorting = useAppSelector((state) => state.sorting);
 
-  const offers = useAppSelector((state) => state.offers.filter((offer) => offer.city === state.city.title));
+  const offers = useAppSelector((state) => sortingOffers(state.offers.filter((offer) => offer.city === state.city.title), selectedSorting));
 
   const emptyClass = offers.length > 0 ? '' : ' page__main--index-empty';
 
@@ -37,7 +37,7 @@ function Main(): JSX.Element {
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{offers.length} places to stay in {selectedCity.title}</b>
                 <Sorting selectedSorting={selectedSorting} />
-                <Offers offers={sortingOffers(offers, selectedSorting)} className="cities__places-list tabs__content" cardType="cities" setActiveCard={setActiveCard} />
+                <Offers offers={offers} className="cities__places-list tabs__content" cardType="cities" setActiveCard={setActiveCard} />
               </section>
               <div className="cities__right-section">
                 <Map city={selectedCity} offers={offers} activeCard={activeCard} className="cities__map" />
