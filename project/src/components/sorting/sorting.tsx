@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { SortingOption } from '../../const';
 import { changeSorting } from '../../store/action';
@@ -30,21 +31,16 @@ function Sorting(): JSX.Element {
       </span>
       {isOpenSorting &&
         <ul className="places__options places__options--custom places__options--opened">
-          {Object.values(SortingOption).map((item) => {
-            const activeClass = item === selectedSorting ? ' places__option--active' : '';
-            const classes = `places__option${activeClass}`;
-
-            return (
-              <li
-                key={item}
-                className={classes}
-                tabIndex={0}
-                onClick={() => chooseSortHandler(item)}
-              >
-                {item}
-              </li>
-            );
-          })}
+          {Object.values(SortingOption).map((item) => (
+            <li
+              key={item}
+              className={classNames('places__option', {'places__option--active': item === selectedSorting })}
+              tabIndex={0}
+              onClick={() => chooseSortHandler(item)}
+            >
+              {item}
+            </li>
+          ))}
         </ul>}
     </form>
   );

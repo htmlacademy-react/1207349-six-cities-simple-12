@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import classNames from 'classnames';
 import { useAppSelector } from '../../hooks';
 import { CITIES } from '../../const';
 import { sortingOffers } from '../../utils';
@@ -16,12 +17,10 @@ function Main(): JSX.Element {
 
   const offers = useAppSelector((state) => sortingOffers(state.offers.filter((offer) => offer.city === state.city.title), selectedSorting));
 
-  const emptyClass = offers.length > 0 ? '' : ' page__main--index-empty';
-
   return (
     <div className="page page--gray page--main">
       <Header isAuth />
-      <main className={`page__main page__main--index${emptyClass}`}>
+      <main className={classNames('page__main page__main--index', {'page__main--index-empty': offers.length === 0})}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
