@@ -8,6 +8,13 @@ export enum AppRoute {
 
 export const RATING_LABELS: string[] = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
+export enum SortingOption {
+  pop = 'Popular',
+  lth = 'Price: low to high',
+  htl = 'Price: high to low',
+  top = 'Top rated first',
+}
+
 export const CITIES: City[] = [
   {
     title: 'Paris',

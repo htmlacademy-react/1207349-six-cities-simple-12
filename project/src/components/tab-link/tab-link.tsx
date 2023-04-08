@@ -1,25 +1,30 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { MouseEvent } from 'react';
 import { City } from '../../types/city';
+import { useAppDispatch } from '../../hooks';
+import { changeCity } from '../../store/action';
 
 type TabLinkProps = {
   city: City;
   selectedCity: string;
-  changeCityHandler: (city: City) => void;
 }
 
-function TabLink({city, selectedCity, changeCityHandler}: TabLinkProps): JSX.Element {
-  const activeClass = city.title === selectedCity ? ' tabs__item--active' : '';
-  const classes = `locations__item-link tabs__item${activeClass}`;
+function TabLink({city, selectedCity}: TabLinkProps): JSX.Element {
+  const dispatch = useAppDispatch();
 
   const clickHandler = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    changeCityHandler(city);
+    dispatch(changeCity(city));
   };
 
   return (
     <li className="locations__item">
-      <Link to="/" className={classes} onClick={clickHandler}>
+      <Link
+        to="/"
+        className={classNames('locations__item-link tabs__item', {'tabs__item--active': city.title === selectedCity})}
+        onClick={clickHandler}
+      >
         <span>{city.title}</span>
       </Link>
     </li>
