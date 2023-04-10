@@ -6,6 +6,10 @@ export enum AppRoute {
   Offer = '/offer/:id',
 }
 
+export enum APIRoute {
+  Offers = '/hotels',
+}
+
 export const RATING_LABELS: string[] = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 export enum SortingOption {
