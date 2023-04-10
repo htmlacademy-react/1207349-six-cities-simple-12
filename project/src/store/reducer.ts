@@ -1,7 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { CITIES, SortingOption } from '../const';
-import { changeCity, changeSorting } from './action';
-import { offers } from '../mocks/offers';
+import { City } from '../types/offer';
 
 const initialState = {
   city: CITIES[0],

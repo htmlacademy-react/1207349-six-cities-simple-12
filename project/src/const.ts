@@ -1,4 +1,4 @@
-import { City } from './types/city';
+import { City } from './types/offer';
 
 export enum AppRoute {
   Root = '/',
@@ -17,29 +17,41 @@ export enum SortingOption {
 
 export const CITIES: City[] = [
   {
-    title: 'Paris',
-    lat: 48.8534100,
-    lng: 2.3488000,
+    name: 'Paris',
+    location: {
+      latitude: 48.8534100,
+      longitude: 2.3488000,
+    }
   }, {
-    title: 'Cologne',
-    lat: 45.5786200,
-    lng: 9.9418000,
+    name: 'Cologne',
+    location: {
+      latitude: 50.938361,
+      longitude: 6.959974,
+    }
   }, {
-    title: 'Brussels',
-    lat: 50.8504500,
-    lng: 4.3487800,
+    name: 'Brussels',
+    location: {
+      latitude: 50.8504500,
+      longitude: 4.3487800,
+    }
   }, {
-    title: 'Amsterdam',
-    lat: 52.3740300,
-    lng: 4.8896900,
+    name: 'Amsterdam',
+    location: {
+      latitude: 52.3740300,
+      longitude: 4.8896900,
+    }
   }, {
-    title: 'Hamburg',
-    lat: 53.5753200,
-    lng: 10.0153400,
+    name: 'Hamburg',
+    location: {
+      latitude: 53.5753200,
+      longitude: 10.0153400,
+    }
   }, {
-    title: 'Dusseldorf',
-    lat: 51.2217200,
-    lng: 6.7761600,
+    name: 'Dusseldorf',
+    location: {
+      latitude: 51.2217200,
+      longitude: 6.7761600,
+    }
   }
 ];
 

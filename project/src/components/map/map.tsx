@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import leaflet from 'leaflet';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
-import { City } from '../../types/city';
+import { City } from '../../types/offer';
 import { Offer } from '../../types/offer';
 import useMap from '../../hooks/useMap';
 
@@ -30,8 +30,8 @@ function Map({city, offers, activeCard, className}: MapProps): JSX.Element {
       offers.forEach((offer) => {
         leaflet
           .marker({
-            lat: offer.coordinates[0],
-            lng: offer.coordinates[1],
+            lat: offer.location.latitude,
+            lng: offer.location.longitude,
           }, {
             icon: (offer.id === activeCard)
               ? currentCustomIcon
@@ -44,7 +44,7 @@ function Map({city, offers, activeCard, className}: MapProps): JSX.Element {
 
   useEffect(() => {
     if (map) {
-      map.setView([city.lat, city.lng], 10);
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom ?? 10);
     }
   }, [map, city]);
 

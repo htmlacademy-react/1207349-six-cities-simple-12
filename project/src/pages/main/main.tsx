@@ -15,7 +15,7 @@ function Main(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.city);
   const selectedSorting = useAppSelector((state) => state.sorting);
 
-  const offers = useAppSelector((state) => sortingOffers(state.offers.filter((offer) => offer.city === state.city.title), selectedSorting));
+  const offers = useAppSelector((state) => sortingOffers(state.offers.filter((offer) => offer.city.name === state.city.name), selectedSorting));
 
   return (
     <div className="page page--gray page--main">
@@ -25,7 +25,7 @@ function Main(): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {CITIES.map((city) => <TabLink key={city.title} city={city} selectedCity={selectedCity.title} />)}
+              {CITIES.map((city) => <TabLink key={city.name} city={city} selectedCity={selectedCity.name} />)}
             </ul>
           </section>
         </div>
@@ -34,7 +34,7 @@ function Main(): JSX.Element {
             <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offers.length} places to stay in {selectedCity.title}</b>
+                <b className="places__found">{offers.length} places to stay in {selectedCity.name}</b>
                 <Sorting />
                 <Offers offers={offers} className="cities__places-list tabs__content" cardType="cities" setActiveCard={setActiveCard} />
               </section>
@@ -48,7 +48,7 @@ function Main(): JSX.Element {
               <section className="cities__no-places">
                 <div className="cities__status-wrapper tabs__content">
                   <b className="cities__status">No places to stay available</b>
-                  <p className="cities__status-description">We could not find any property available at the moment in {selectedCity.title}</p>
+                  <p className="cities__status-description">We could not find any property available at the moment in {selectedCity.name}</p>
                 </div>
               </section>
               <div className="cities__right-section"></div>
