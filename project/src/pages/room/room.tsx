@@ -1,15 +1,15 @@
-import { nearPlacesOffers } from '../../mocks/offers';
-import { reviews } from '../../mocks/reviews';
-import { useState } from 'react';
+// Данная страница пока не работает, функционал будет разработан в 7.16. Добро пожаловать, или посторонним вход воспрещён (часть 2)
+// import { useState } from 'react';
 import Header from '../../components/header/header';
 import ReviewForm from '../../components/review-form/review-form';
-import ReviewList from '../../components/review-list/review-list';
-import Map from '../../components/map/map';
-import Offers from '../../components/offers/offers';
-import { CITIES } from '../../const';
+// import ReviewList from '../../components/review-list/review-list';
+// import Map from '../../components/map/map';
+// import Offers from '../../components/offers/offers';
+// import { CITIES } from '../../const';
+// import { useAppSelector } from '../../hooks';
 
 function Room(): JSX.Element {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
+  // const [activeCard, setActiveCard] = useState<number | null>(null);
 
   return (
     <div className="page">
@@ -128,17 +128,17 @@ function Room(): JSX.Element {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <ReviewList reviews={reviews} />
+                {/* <ReviewList reviews={reviews} /> */}
                 <ReviewForm />
               </section>
             </div>
           </div>
-          <Map city={CITIES[3]} offers={nearPlacesOffers} activeCard={activeCard} className="property__map" />
+          {/* <Map city={CITIES[3]} offers={nearPlacesOffers} activeCard={activeCard} className={'property__map'} /> */}
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <Offers offers={nearPlacesOffers} className="near-places__list" cardType="near-places" setActiveCard={setActiveCard} />
+            {/* <Offers offers={offers} className={'near-places__list'} cardType={'near-places'} setActiveCard={setActiveCard} /> */}
           </section>
         </div>
       </main>
