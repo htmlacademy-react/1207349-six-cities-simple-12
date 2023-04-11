@@ -10,6 +10,7 @@ function Header(): JSX.Element {
 
   const location = useLocation();
 
+  const userEmail = useAppSelector((state) => state.user?.email);
   const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
   const isLoginPage = AppRoute.Login === location.pathname;
 
@@ -29,7 +30,7 @@ function Header(): JSX.Element {
                   {isAuth ?
                     <div className="header__nav-profile">
                       <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                      <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
+                      <span className="header__user-name user__name">{userEmail}</span>
                     </div> :
                     <Link className="header__nav-link header__nav-link--profile" to={AppRoute.Login}>
                       <div className="header__avatar-wrapper user__avatar-wrapper"></div>
