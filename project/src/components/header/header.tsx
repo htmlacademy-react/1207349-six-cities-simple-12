@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useLocation } from 'react-router-dom';
+import { logoutAction } from '../../store/api-actions';
 
-type HeaderProps = {
-  isAuth?: boolean;
-  isLoginPage?: boolean;
-}
 
-function Header({isAuth = false, isLoginPage}: HeaderProps): JSX.Element {
+function Header(): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  const location = useLocation();
+
+  const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
+  const isLoginPage = AppRoute.Login === location.pathname;
+
   return (
     <header className="header">
       <div className="container">
@@ -32,7 +38,14 @@ function Header({isAuth = false, isLoginPage}: HeaderProps): JSX.Element {
                 </li>
                 {!isAuth ? '' :
                   <li className="header__nav-item">
-                    <Link className="header__nav-link" to={AppRoute.Login}>
+                    <Link
+                      className="header__nav-link"
+                      to={AppRoute.Login}
+                      onClick={(evt) => {
+                        evt.preventDefault();
+                        dispatch(logoutAction());
+                      }}
+                    >
                       <span className="header__signout">Sign out</span>
                     </Link>
                   </li> }

@@ -13,7 +13,7 @@ function Room(): JSX.Element {
 
   return (
     <div className="page">
-      <Header isAuth />
+      <Header />
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
