@@ -8,9 +8,15 @@ export enum AppRoute {
 
 export enum APIRoute {
   Offers = '/hotels',
+  Login = '/login',
+  Logout = '/logout',
 }
 
-export const RATING_LABELS: string[] = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
 
 export enum SortingOption {
   pop = 'Popular',
@@ -18,6 +24,8 @@ export enum SortingOption {
   htl = 'Price: high to low',
   top = 'Top rated first',
 }
+
+export const RATING_LABELS: string[] = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 export const CITIES: City[] = [
   {

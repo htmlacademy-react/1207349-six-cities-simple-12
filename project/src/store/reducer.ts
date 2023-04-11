@@ -1,8 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { CITIES, SortingOption } from '../const';
+import { AuthorizationStatus, CITIES, SortingOption } from '../const';
 import { City } from '../types/offer';
 import { Offer } from '../types/offer';
-import { changeCity, changeSorting, loadOffers, setOffersDataLoadingStatus } from './action';
+import { changeCity, changeSorting, loadOffers, requireAuthorization, setOffersDataLoadingStatus } from './action';
 
 type Offers = Offer[];
 
@@ -11,6 +11,7 @@ type InitialState = {
   offers: Offers;
   sorting: SortingOption;
   isOffersDataLoading: boolean;
+  authorizationStatus: AuthorizationStatus;
 }
 
 const initialState: InitialState = {
@@ -18,6 +19,7 @@ const initialState: InitialState = {
   offers: [],
   sorting: SortingOption.pop,
   isOffersDataLoading: false,
+  authorizationStatus: AuthorizationStatus.Unknown,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -33,6 +35,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setOffersDataLoadingStatus, (state, action) => {
       state.isOffersDataLoading = action.payload;
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
     });
 });
 
