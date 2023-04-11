@@ -25,6 +25,11 @@ export enum SortingOption {
   top = 'Top rated first',
 }
 
+export enum UrlMarker {
+  Default = 'img/pin.svg',
+  Current = 'img/pin-active.svg',
+}
+
 export const RATING_LABELS: string[] = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 export const CITIES: City[] = [
@@ -66,7 +71,3 @@ export const CITIES: City[] = [
     }
   }
 ];
-
-export const URL_MARKER_DEFAULT = 'img/pin.svg';
-
-export const URL_MARKER_CURRENT = 'img/pin-active.svg';
