@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, CITIES, SortingOption } from '../const';
 import { City } from '../types/offer';
 import { Offer } from '../types/offer';
-import { changeCity, changeSorting, loadReviews, loadNearPlacesOffers, loadOffers, loadUser, requireAuthorization, setOffersDataLoadingStatus } from './action';
+import { changeCity, changeSorting, loadReviews, loadNearPlacesOffers, loadOffers, loadUser, requireAuthorization, setOffersDataLoadingStatus, publishReview } from './action';
 import { UserData } from '../types/user-data';
 import { Review } from '../types/review';
 
@@ -43,6 +43,9 @@ const reducer = createReducer(initialState, (builder) => {
       state.nearPlacesOffers = action.payload;
     })
     .addCase(loadReviews, (state, action) => {
+      state.reviews = action.payload;
+    })
+    .addCase(publishReview, (state, action) => {
       state.reviews = action.payload;
     })
     .addCase(loadUser, (state, action) => {
