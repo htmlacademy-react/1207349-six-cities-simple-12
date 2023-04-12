@@ -2,13 +2,15 @@ import { createReducer } from '@reduxjs/toolkit';
 import { AuthorizationStatus, CITIES, SortingOption } from '../const';
 import { City } from '../types/offer';
 import { Offer } from '../types/offer';
-import { changeCity, changeSorting, loadNearPlacesOffers, loadOffers, loadUser, requireAuthorization, setOffersDataLoadingStatus } from './action';
+import { changeCity, changeSorting, loadReviews, loadNearPlacesOffers, loadOffers, loadUser, requireAuthorization, setOffersDataLoadingStatus } from './action';
 import { UserData } from '../types/user-data';
+import { Review } from '../types/review';
 
 type InitialState = {
   city: City;
   offers: Offer[];
   nearPlacesOffers: Offer[];
+  reviews: Review[];
   sorting: SortingOption;
   isOffersDataLoading: boolean;
   authorizationStatus: AuthorizationStatus;
@@ -19,6 +21,7 @@ const initialState: InitialState = {
   city: CITIES[0],
   offers: [],
   nearPlacesOffers: [],
+  reviews: [],
   sorting: SortingOption.pop,
   isOffersDataLoading: false,
   authorizationStatus: AuthorizationStatus.Unknown,
@@ -38,6 +41,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadNearPlacesOffers, (state, action) => {
       state.nearPlacesOffers = action.payload;
+    })
+    .addCase(loadReviews, (state, action) => {
+      state.reviews = action.payload;
     })
     .addCase(loadUser, (state, action) => {
       state.user = action.payload;

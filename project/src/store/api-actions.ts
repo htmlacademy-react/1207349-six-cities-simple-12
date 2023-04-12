@@ -2,11 +2,12 @@ import { AxiosInstance } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AppDispatch, State } from '../types/state';
 import { Offer } from '../types/offer';
-import { loadNearPlacesOffers, loadOffers, loadUser, redirectToRoute, requireAuthorization, setOffersDataLoadingStatus } from './action';
+import { loadNearPlacesOffers, loadOffers, loadReviews, loadUser, redirectToRoute, requireAuthorization, setOffersDataLoadingStatus } from './action';
 import { APIRoute, AppRoute, AuthorizationStatus } from '../const';
 import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';
 import { dropToken, saveToken } from '../services/token';
+import { Review } from '../types/review';
 
 export const fetchOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
@@ -31,6 +32,18 @@ export const fetchNearPlacesOffersAction = createAsyncThunk<void, number, {
   async (hotelId, {dispatch, extra: api}) => {
     const {data} = await api.get<Offer[]>(APIRoute.NearPlacesOffers.replace('{hotelId}', hotelId.toString()));
     dispatch(loadNearPlacesOffers(data));
+  },
+);
+
+export const fetchReviewsAction = createAsyncThunk<void, number, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'data/loadReviews',
+  async (hotelId, {dispatch, extra: api}) => {
+    const {data} = await api.get<Review[]>(APIRoute.Reviews.replace('{hotelId}', hotelId.toString()));
+    dispatch(loadReviews(data));
   },
 );
 

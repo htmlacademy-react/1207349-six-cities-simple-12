@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Offer } from '../../types/offer';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { fetchNearPlacesOffersAction } from '../../store/api-actions';
+import { fetchNearPlacesOffersAction, fetchReviewsAction } from '../../store/api-actions';
 import NotFound from '../../pages/not-found/not-found';
 import Header from '../../components/header/header';
 import ReviewForm from '../../components/review-form/review-form';
+import ReviewList from '../../components/review-list/review-list';
 import Map from '../../components/map/map';
 import Offers from '../../components/offers/offers';
 
@@ -19,11 +20,13 @@ function Room(): JSX.Element {
 
   useEffect(() => {
     dispatch(fetchNearPlacesOffersAction(offerId));
+    dispatch(fetchReviewsAction(offerId));
   }, [dispatch, offerId]);
 
   const offers = useAppSelector((state) => state.offers);
   const offer: Offer | undefined = offers.find((element) => element.id === offerId);
   const nearPlacesOffers = useAppSelector((state) => state.nearPlacesOffers);
+  const reviews = useAppSelector((state) => state.reviews);
 
 
   if (offer === undefined) {
@@ -102,7 +105,7 @@ function Room(): JSX.Element {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                {/* <ReviewList reviews={reviews} /> */}
+                <ReviewList reviews={reviews} />
                 <ReviewForm />
               </section>
             </div>
