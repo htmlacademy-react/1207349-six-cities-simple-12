@@ -10,6 +10,8 @@ export const changeSorting = createAction<SortingOption>('offers/changeSorting')
 
 export const loadOffers = createAction<Offer[]>('data/loadOffers');
 
+export const loadNearPlacesOffers = createAction<Offer[]>('data/loadNearPlacesOffers');
+
 export const loadUser = createAction<UserData | null>('data/loadUser');
 
 export const setOffersDataLoadingStatus = createAction<boolean>('data/setOffersDataLoadingStatus');

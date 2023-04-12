@@ -8,6 +8,7 @@ export enum AppRoute {
 
 export enum APIRoute {
   Offers = '/hotels',
+  NearPlacesOffers = '/hotels/{hotelId}/nearby',
   Login = '/login',
   Logout = '/logout',
 }
