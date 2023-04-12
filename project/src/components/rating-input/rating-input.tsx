@@ -3,10 +3,11 @@ import { ChangeEvent } from 'react';
 type RatingInputProps = {
   title: string;
   count: number;
+  currRating: number;
   fieldChangeHandler: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function RatingInput({title, count, fieldChangeHandler}: RatingInputProps): JSX.Element {
+function RatingInput({title, count, currRating, fieldChangeHandler}: RatingInputProps): JSX.Element {
   return (
     <>
       <input
@@ -16,6 +17,7 @@ function RatingInput({title, count, fieldChangeHandler}: RatingInputProps): JSX.
         value={count}
         id={`${count}-stars`}
         type="radio"
+        checked={count === Number(currRating)}
       />
       <label
         htmlFor={`${count}-stars`}

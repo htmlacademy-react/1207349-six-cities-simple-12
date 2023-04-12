@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Offer } from '../../types/offer';
+import { AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchNearPlacesOffersAction, fetchReviewsAction } from '../../store/api-actions';
 import NotFound from '../../pages/not-found/not-found';
@@ -27,7 +28,7 @@ function Room(): JSX.Element {
   const offer: Offer | undefined = offers.find((element) => element.id === offerId);
   const nearPlacesOffers = useAppSelector((state) => state.nearPlacesOffers);
   const reviews = useAppSelector((state) => state.reviews);
-
+  const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
 
   if (offer === undefined) {
     return <NotFound />;
@@ -106,7 +107,7 @@ function Room(): JSX.Element {
               </div>
               <section className="property__reviews reviews">
                 <ReviewList reviews={reviews} />
-                <ReviewForm />
+                {isAuth && <ReviewForm offerId={offerId}/>}
               </section>
             </div>
           </div>
