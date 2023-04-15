@@ -10,11 +10,15 @@ import { dropToken, saveToken } from '../services/token';
 import { APIRoute, AppRoute, AuthorizationStatus } from '../const';
 import { loadNearPlacesOffers, loadOffers, loadReviews, loadUser, publishReview, redirectToRoute, requireAuthorization, setOffersDataLoadingStatus } from './action';
 
-export const fetchOffersAction = createAsyncThunk<void, undefined, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+function createAsyncThunkTeamplate<ThunkArg = undefined>() {
+  return createAsyncThunk<void, ThunkArg, {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }>;
+}
+
+export const fetchOffersAction = createAsyncThunkTeamplate()(
   'data/loadOffers',
   async (_arg, {dispatch, extra: api}) => {
     dispatch(setOffersDataLoadingStatus(true));
@@ -24,11 +28,7 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const fetchNearPlacesOffersAction = createAsyncThunk<void, number, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const fetchNearPlacesOffersAction = createAsyncThunkTeamplate<number>()(
   'data/loadNearPlacesOffers',
   async (hotelId, {dispatch, extra: api}) => {
     const {data} = await api.get<Offer[]>(APIRoute.NearPlacesOffers.replace('{hotelId}', hotelId.toString()));
@@ -36,11 +36,7 @@ export const fetchNearPlacesOffersAction = createAsyncThunk<void, number, {
   },
 );
 
-export const fetchReviewsAction = createAsyncThunk<void, number, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const fetchReviewsAction = createAsyncThunkTeamplate<number>()(
   'data/loadReviews',
   async (hotelId, {dispatch, extra: api}) => {
     const {data} = await api.get<Review[]>(APIRoute.Reviews.replace('{hotelId}', hotelId.toString()));
@@ -48,11 +44,7 @@ export const fetchReviewsAction = createAsyncThunk<void, number, {
   },
 );
 
-export const publishReviewAction = createAsyncThunk<void, ReviewData, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const publishReviewAction = createAsyncThunkTeamplate<ReviewData>()(
   'data/publishReviews',
   async ({rating, comment, hotelId}, {dispatch, extra: api}) => {
     const {data} = await api.post<Review[]>(APIRoute.Reviews.replace('{hotelId}', hotelId.toString()), {rating, comment});
@@ -60,11 +52,7 @@ export const publishReviewAction = createAsyncThunk<void, ReviewData, {
   },
 );
 
-export const checkAuthAction = createAsyncThunk<void, undefined, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const checkAuthAction = createAsyncThunkTeamplate()(
   'user/checkAuth',
   async (_arg, {dispatch, extra: api}) => {
     try {
@@ -77,11 +65,7 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const loginAction = createAsyncThunk<void, AuthData, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const loginAction = createAsyncThunkTeamplate<AuthData>()(
   'user/login',
   async ({login: email, password}, {dispatch, extra: api}) => {
     const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
@@ -92,11 +76,7 @@ export const loginAction = createAsyncThunk<void, AuthData, {
   },
 );
 
-export const logoutAction = createAsyncThunk<void, undefined, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
+export const logoutAction = createAsyncThunkTeamplate()(
   'user/logout',
   async (_arg, {dispatch, extra: api}) => {
     await api.delete(APIRoute.Logout);
