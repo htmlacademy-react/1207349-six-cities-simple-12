@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Offer } from '../../types/offer';
-import { AuthorizationStatus } from '../../const';
+import { AuthorizationStatus, GALLERY_DISPLAY_COUNT } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchNearPlacesOffersAction, fetchReviewsAction } from '../../store/api-actions';
 import NotFound from '../../pages/not-found/not-found';
@@ -25,7 +24,7 @@ function Room(): JSX.Element {
   }, [dispatch, offerId]);
 
   const offers = useAppSelector((state) => state.offers);
-  const offer: Offer | undefined = offers.find((element) => element.id === offerId);
+  const offer = offers.find((element) => element.id === offerId);
   const nearPlacesOffers = useAppSelector((state) => state.nearPlacesOffers);
   const reviews = useAppSelector((state) => state.reviews);
   const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
@@ -44,7 +43,7 @@ function Room(): JSX.Element {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {images.slice(0,6).map((image) => (
+              {images.slice(0, GALLERY_DISPLAY_COUNT).map((image) => (
                 <div key={image} className="property__image-wrapper">
                   <img className="property__image" src={image} alt={title} />
                 </div>
