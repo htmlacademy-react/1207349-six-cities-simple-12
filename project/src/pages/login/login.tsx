@@ -1,32 +1,44 @@
 import Header from '../../components/header/header';
-import { useRef, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 
 function Login(): JSX.Element {
   const dispatch = useAppDispatch();
-
-  const loginRef = useRef<HTMLInputElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
+  const navigate = useNavigate();
 
   const selectedCity = useAppSelector((state) => state.city);
+  const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
 
-  const onSubmit = (authData: AuthData) => {
-    dispatch(loginAction(authData));
+  const [formData, setFormData] = useState<AuthData>({
+    login: '',
+    password: '',
+  });
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate(AppRoute.Root);
+    }
+  }, [isAuth, navigate]);
+
+  const fieldChangeHandler = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const {name, value} = evt.target;
+
+    if (name === 'password' && !/^(?=.*[a-zA-Z])(?=.*\d)(?=.{1,}$)/.test(value)) {
+      evt.target.setCustomValidity('Пароль должен состоять минимум из одной буквы и цифры.');
+    } else {
+      evt.target.setCustomValidity('');
+    }
+
+    setFormData({...formData, [name]: value});
   };
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+  const formSubmitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-
-    if (loginRef.current !== null && passwordRef.current !== null) {
-      onSubmit({
-        login: loginRef.current.value,
-        password: passwordRef.current.value,
-      });
-    }
+    dispatch(loginAction(formData));
   };
 
   return (
@@ -36,14 +48,15 @@ function Login(): JSX.Element {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form className="login__form form" action="" onSubmit={handleSubmit}>
+            <form className="login__form form" action="" onSubmit={formSubmitHandler}>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input
-                  ref={loginRef}
+                  onChange={fieldChangeHandler}
+                  value={formData.login}
                   className="login__input form__input"
                   type="email"
-                  name="email"
+                  name="login"
                   placeholder="Email"
                   required
                 />
@@ -51,11 +64,13 @@ function Login(): JSX.Element {
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
                 <input
-                  ref={passwordRef}
+                  onChange={fieldChangeHandler}
+                  value={formData.password}
                   className="login__input form__input"
                   type="password"
                   name="password"
                   placeholder="Password"
+                  minLength={2}
                   required
                 />
               </div>
