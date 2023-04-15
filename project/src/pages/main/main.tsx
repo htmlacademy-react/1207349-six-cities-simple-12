@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classNames from 'classnames';
 import { useAppSelector } from '../../hooks';
-import { CITIES } from '../../const';
+import { city } from '../../const';
 import { sortingOffers } from '../../utils';
 import Header from '../../components/header/header';
 import Offers from '../../components/offers/offers';
@@ -25,7 +25,7 @@ function Main(): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {CITIES.map((city) => <TabLink key={city.name} city={city} selectedCity={selectedCity.name} />)}
+              {Object.values(city).map((cityItem) => <TabLink key={cityItem.name} city={cityItem} selectedCity={selectedCity.name} />)}
             </ul>
           </section>
         </div>

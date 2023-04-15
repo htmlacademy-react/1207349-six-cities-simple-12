@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { AuthorizationStatus, CITIES, SortingOption } from '../const';
+import { AuthorizationStatus, SortingOption, city } from '../const';
 import { City } from '../types/offer';
 import { Offer } from '../types/offer';
 import { changeCity, changeSorting, loadReviews, loadNearPlacesOffers, loadOffers, loadUser, requireAuthorization, setOffersDataLoadingStatus, publishReview } from './action';
@@ -18,7 +18,7 @@ type InitialState = {
 }
 
 const initialState: InitialState = {
-  city: CITIES[0],
+  city: city['Paris'],
   offers: [],
   nearPlacesOffers: [],
   reviews: [],
