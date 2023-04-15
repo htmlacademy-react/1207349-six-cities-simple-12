@@ -35,7 +35,15 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
     <form className="reviews__form form" action="#" method="post" onSubmit={formSubmitHandler}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {RATING_LABELS.map((title, i, arr) => <RatingInput key={title} count={arr.length - i} title={title} currRating={formData.rating} fieldChangeHandler={fieldChangeHandler} />)}
+        {RATING_LABELS.map((title, i, arr) => (
+          <RatingInput
+            key={title}
+            count={arr.length - i}
+            title={title}
+            currRating={formData.rating}
+            fieldChangeHandler={fieldChangeHandler}
+          />
+        ))}
       </div>
       <textarea
         onChange={fieldChangeHandler}
