@@ -9,7 +9,7 @@ type CardProps = {
 }
 
 function Card({offer, cardType, setActiveCard}: CardProps): JSX.Element {
-  const {id, images, title, isPremium, type, rating, price} = offer;
+  const {id, previewImage, title, isPremium, type, rating, price} = offer;
 
   return (
     <article className={`${cardType}__card place-card`} onMouseOver={() => setActiveCard(id)}>
@@ -19,7 +19,7 @@ function Card({offer, cardType, setActiveCard}: CardProps): JSX.Element {
         </div> }
       <div className={`${cardType}__image-wrapper place-card__image-wrapper`}>
         <Link to={AppRoute.Offer.replace(':id', id.toString())}>
-          <img className="place-card__image" src={images[0]} width="260" height="200" alt={title} />
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt={title} />
         </Link>
       </div>
       <div className="place-card__info">

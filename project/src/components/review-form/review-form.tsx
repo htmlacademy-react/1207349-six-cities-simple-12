@@ -1,11 +1,19 @@
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { RATING_LABELS } from '../../const';
 import RatingInput from '../rating-input/rating-input';
+import { useAppDispatch } from '../../hooks';
+import { publishReviewAction } from '../../store/api-actions';
 
-function ReviewForm(): JSX.Element {
+type ReviewFormProps = {
+  offerId: number;
+}
+
+function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
-    rating: '',
-    review: '',
+    rating: 0,
+    comment: '',
+    hotelId: offerId,
   });
 
   const fieldChangeHandler = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -15,20 +23,34 @@ function ReviewForm(): JSX.Element {
 
   const formSubmitHandler = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
+    dispatch(publishReviewAction(formData));
+    setFormData({
+      rating: 0,
+      comment: '',
+      hotelId: offerId,
+    });
   };
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={formSubmitHandler}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
-        {RATING_LABELS.map((title, i, arr) => <RatingInput key={title} count={arr.length - i} title={title} fieldChangeHandler={fieldChangeHandler} />)}
+        {RATING_LABELS.map((title, i, arr) => (
+          <RatingInput
+            key={title}
+            count={arr.length - i}
+            title={title}
+            currRating={formData.rating}
+            fieldChangeHandler={fieldChangeHandler}
+          />
+        ))}
       </div>
       <textarea
         onChange={fieldChangeHandler}
         className="reviews__textarea form__textarea"
-        id="review"
-        value={formData.review}
-        name="review"
+        id="comment"
+        value={formData.comment}
+        name="comment"
         placeholder="Tell how was your stay, what you like and what can be improved"
       />
       <div className="reviews__button-wrapper">

@@ -1,6 +1,7 @@
 type User = {
+  avatarUrl: string;
   id: number;
-  avatar: string;
+  isPro: boolean;
   name: string;
 }
 
@@ -9,5 +10,5 @@ export type Review = {
   user: User;
   rating: number;
   date: string;
-  textReview: string;
+  comment: string;
 }
