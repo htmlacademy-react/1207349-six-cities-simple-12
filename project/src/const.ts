@@ -8,6 +8,12 @@ export enum AppRoute {
   Offer = '/offer/:id',
 }
 
+export enum NameSpace {
+  Offers = 'OFFERS',
+  Data = 'DATA',
+  User = 'USER',
+}
+
 export enum APIRoute {
   Offers = '/hotels',
   NearPlacesOffers = '/hotels/{hotelId}/nearby',
