@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Offer } from '../../types/offer';
 import Card from '../card/card';
 
@@ -16,4 +17,4 @@ function Offers({offers, className, cardType, setActiveCard}: OffersProps): JSX.
   );
 }
 
-export default Offers;
+export default memo(Offers);

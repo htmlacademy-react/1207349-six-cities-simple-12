@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 import { Offer } from '../../types/offer';
 import { AppRoute } from '../../const';
 
@@ -46,4 +47,4 @@ function Card({offer, cardType, setActiveCard}: CardProps): JSX.Element {
   );
 }
 
-export default Card;
+export default memo(Card);

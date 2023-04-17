@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { MouseEvent } from 'react';
+import { MouseEvent, memo } from 'react';
 import { City } from '../../types/offer';
 import { useAppDispatch } from '../../hooks';
 import { changeCity } from '../../store/action';
@@ -31,4 +31,4 @@ function TabLink({city, selectedCity}: TabLinkProps): JSX.Element {
   );
 }
 
-export default TabLink;
+export default memo(TabLink);

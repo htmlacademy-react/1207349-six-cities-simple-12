@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, memo } from 'react';
 import { RATING_LABELS } from '../../const';
 import RatingInput from '../rating-input/rating-input';
 import { useAppDispatch } from '../../hooks';
@@ -63,4 +63,4 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
   );
 }
 
-export default ReviewForm;
+export default memo(ReviewForm);

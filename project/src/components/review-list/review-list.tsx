@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Review } from '../../types/review';
 import ReviewItem from '../review-item/review-item';
 
@@ -21,4 +22,4 @@ function ReviewList({reviews}: ReviewListProps): JSX.Element {
   );
 }
 
-export default ReviewList;
+export default memo(ReviewList);
