@@ -23,6 +23,10 @@ export const offersData = createSlice({
         state.offers = action.payload;
         state.isOffersDataLoading = false;
       })
+      .addCase(fetchOffersAction.rejected, (state) => {
+        state.offers = [];
+        state.isOffersDataLoading = false;
+      })
       .addCase(fetchNearPlacesOffersAction.fulfilled, (state, action) => {
         state.nearPlacesOffers = action.payload;
       })
