@@ -5,6 +5,7 @@ import { City, Offer } from '../../types/offer';
 import Offers from '../../components/offers/offers';
 import Sorting from '../../components/sorting/sorting';
 import Map from '../../components/map/map';
+import { getSorting } from '../../store/offers-processe/selectors';
 
 type OffersMainProps = {
   offers: Offer[];
@@ -13,7 +14,7 @@ type OffersMainProps = {
 function OffersMain({offers, selectedCity}: OffersMainProps): JSX.Element {
   const [activeCard, setActiveCard] = useState<number | null>(null);
 
-  const selectedSorting = useAppSelector((state) => state.sorting);
+  const selectedSorting = useAppSelector(getSorting);
 
   sortingOffers(offers, selectedSorting);
 

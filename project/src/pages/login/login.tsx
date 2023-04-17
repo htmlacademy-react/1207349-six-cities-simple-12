@@ -4,12 +4,14 @@ import { useAppSelector } from '../../hooks';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import Layout from '../../components/layout/layout';
 import LoginForm from '../../components/login-form/login-form';
+import { getCity } from '../../store/offers-processe/selectors';
+import { getAuthorizationStatus } from '../../store/user-processe/selectors';
 
 function Login(): JSX.Element {
   const navigate = useNavigate();
 
-  const selectedCity = useAppSelector((state) => state.city);
-  const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
+  const selectedCity = useAppSelector(getCity);
+  const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
 
   useEffect(() => {
     if (isAuth) {

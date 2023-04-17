@@ -10,6 +10,8 @@ import ReviewList from '../../components/review-list/review-list';
 import Map from '../../components/map/map';
 import Offers from '../../components/offers/offers';
 import Layout from '../../components/layout/layout';
+import { getNearPlacesOffers, getOffers, getReviews } from '../../store/offers-data/selectors';
+import { getAuthorizationStatus } from '../../store/user-processe/selectors';
 
 function Room(): JSX.Element {
   const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -23,11 +25,11 @@ function Room(): JSX.Element {
     dispatch(fetchReviewsAction(offerId));
   }, [dispatch, offerId]);
 
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(getOffers);
   const offer = offers.find((element) => element.id === offerId);
-  const nearPlacesOffers = useAppSelector((state) => state.nearPlacesOffers);
-  const reviews = useAppSelector((state) => state.reviews);
-  const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
+  const nearPlacesOffers = useAppSelector(getNearPlacesOffers);
+  const reviews = useAppSelector(getReviews);
+  const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
 
   if (offer === undefined) {
     return <NotFound />;

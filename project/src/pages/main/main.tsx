@@ -4,10 +4,12 @@ import Tabs from '../../components/tabs/tabs';
 import OffersMainEmpty from '../../components/offers-main-empty/offers-main-empty';
 import OffersMain from '../../components/offers-main/offers-main';
 import Layout from '../../components/layout/layout';
+import { getCity } from '../../store/offers-processe/selectors';
+import { getOffers } from '../../store/offers-data/selectors';
 
 function Main(): JSX.Element {
-  const offers = useAppSelector((state) => state.offers.filter((offer) => offer.city.name === state.city.name));
-  const selectedCity = useAppSelector((state) => state.city);
+  const selectedCity = useAppSelector(getCity);
+  const offers = useAppSelector(getOffers).filter((offer) => offer.city.name === selectedCity.name);
 
   return (
     <Layout className="page--gray page--main">

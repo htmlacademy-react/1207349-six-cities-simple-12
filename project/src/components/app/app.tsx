@@ -8,9 +8,10 @@ import Loading from '../../pages/loading/loading';
 import { useAppSelector } from '../../hooks';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
+import { getOffersDataLoadingStatus } from '../../store/offers-data/selectors';
 
 function App(): JSX.Element {
-  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
+  const isOffersDataLoading = useAppSelector(getOffersDataLoadingStatus);
 
   if (isOffersDataLoading) {
     return (

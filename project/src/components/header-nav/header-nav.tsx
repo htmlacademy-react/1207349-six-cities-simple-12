@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
+import { getAuthorizationStatus, getCurrentUser } from '../../store/user-processe/selectors';
 
 
 function HeaderNav(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const userEmail = useAppSelector((state) => state.user?.email);
-  const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
+  const userEmail = useAppSelector(getCurrentUser)?.email;
+  const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
 
   return (
     <nav className="header__nav">

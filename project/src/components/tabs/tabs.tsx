@@ -1,10 +1,11 @@
 import { city } from '../../const';
 import { useAppSelector } from '../../hooks';
+import { getCity } from '../../store/offers-processe/selectors';
 import TabLink from '../tab-link/tab-link';
 
 
 function Tabs(): JSX.Element {
-  const selectedCity = useAppSelector((state) => state.city);
+  const selectedCity = useAppSelector(getCity);
 
   return (
     <>

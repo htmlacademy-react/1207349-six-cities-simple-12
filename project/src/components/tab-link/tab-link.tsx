@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MouseEvent, memo } from 'react';
 import { City } from '../../types/offer';
 import { useAppDispatch } from '../../hooks';
-import { changeCity } from '../../store/action';
+import { changeCity } from '../../store/offers-processe/offers-processe';
 
 type TabLinkProps = {
   city: City;
