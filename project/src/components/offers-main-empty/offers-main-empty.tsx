@@ -3,6 +3,7 @@ import { City } from '../../types/offer';
 type OffersMainEmptyProps = {
   selectedCity: City;
 }
+
 function OffersMainEmpty({selectedCity}: OffersMainEmptyProps): JSX.Element {
   return (
     <div className="cities">
