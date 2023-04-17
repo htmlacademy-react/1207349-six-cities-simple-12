@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import Header from '../../components/header/header';
+import Layout from '../../components/layout/layout';
 
 function NotFound(): JSX.Element {
   return (
-    <div className="page page--gray page--main">
-      <Header />
+    <Layout className="page--gray page--main">
       <main className="page__main page__main--index page__main--index-empty">
         <div className="cities">
           <div className="cities__places-container cities__places-container--empty container">
@@ -18,7 +17,7 @@ function NotFound(): JSX.Element {
           </div>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }
 

@@ -1,10 +1,10 @@
-import Header from '../../components/header/header';
 import { FormEvent, useState, ChangeEvent, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import Layout from '../../components/layout/layout';
 
 function Login(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -42,8 +42,7 @@ function Login(): JSX.Element {
   };
 
   return (
-    <div className="page page--gray page--login">
-      <Header />
+    <Layout className="page--gray page--login">
       <main className="page__main page__main--login">
         <div className="page__login-container container">
           <section className="login">
@@ -86,7 +85,7 @@ function Login(): JSX.Element {
           </section>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }
 

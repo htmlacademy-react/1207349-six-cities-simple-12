@@ -10,7 +10,7 @@ function Main(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.city);
 
   return (
-    <Layout className="page page--gray page--main">
+    <Layout className="page--gray page--main">
       <main className={classNames('page__main page__main--index', {'page__main--index-empty': offers.length === 0})}>
         <Tabs />
         {offers.length > 0

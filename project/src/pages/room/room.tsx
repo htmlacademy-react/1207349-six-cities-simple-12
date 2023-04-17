@@ -5,11 +5,11 @@ import { AuthorizationStatus, GALLERY_DISPLAY_COUNT } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchNearPlacesOffersAction, fetchReviewsAction } from '../../store/api-actions';
 import NotFound from '../../pages/not-found/not-found';
-import Header from '../../components/header/header';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewList from '../../components/review-list/review-list';
 import Map from '../../components/map/map';
 import Offers from '../../components/offers/offers';
+import Layout from '../../components/layout/layout';
 
 function Room(): JSX.Element {
   const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -37,8 +37,7 @@ function Room(): JSX.Element {
   const {name, avatarUrl, isPro} = host;
 
   return (
-    <div className="page">
-      <Header />
+    <Layout>
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -119,7 +118,7 @@ function Room(): JSX.Element {
           </section>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }
 
