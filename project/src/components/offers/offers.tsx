@@ -6,7 +6,7 @@ type OffersProps = {
   offers: Offer[];
   className: string;
   cardType: string;
-  setActiveCard: (id: number | null) => void;
+  setActiveCard?: (id: number | null) => void;
 }
 
 function Offers({offers, className, cardType, setActiveCard}: OffersProps): JSX.Element {

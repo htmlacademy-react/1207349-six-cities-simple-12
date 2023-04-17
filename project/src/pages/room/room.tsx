@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
 import { useEffect } from 'react';
 import { AuthorizationStatus, GALLERY_DISPLAY_COUNT } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -14,8 +13,6 @@ import { getNearPlacesOffers, getOffers, getReviews } from '../../store/offers-d
 import { getAuthorizationStatus } from '../../store/user-processe/selectors';
 
 function Room(): JSX.Element {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-
   const dispatch = useAppDispatch();
 
   const offerId = Number(useParams().id);
@@ -35,7 +32,7 @@ function Room(): JSX.Element {
     return <NotFound />;
   }
 
-  const {title, rating, isPremium, images, type, bedrooms, maxAdults, price, goods, host, description, city} = offer;
+  const {title, rating, isPremium, images, type, bedrooms, maxAdults, price, goods, host, description, city, id} = offer;
   const {name, avatarUrl, isPro} = host;
 
   return (
@@ -111,12 +108,12 @@ function Room(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map city={city} offers={nearPlacesOffers} activeCard={activeCard} className={'property__map'} />
+          <Map city={city} offers={[...nearPlacesOffers, offer]} activeCard={id} className={'property__map'} />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <Offers offers={nearPlacesOffers} className={'near-places__list'} cardType={'near-places'} setActiveCard={setActiveCard} />
+            <Offers offers={nearPlacesOffers} className={'near-places__list'} cardType={'near-places'} />
           </section>
         </div>
       </main>
