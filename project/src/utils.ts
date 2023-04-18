@@ -20,17 +20,10 @@ export const sortingOffers = (offers: Offer[], type: string): Offer[] => {
 
 export const sortingReviews = (reviews: Review[]): Review[] => {
   reviews.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
 
-    if (dateA > dateB) {
-      return -1;
-    }
-    if (dateA < dateB) {
-      return 1;
-    }
-
-    return 0;
+    return Math.sign(dateB - dateA);
   });
 
   return reviews;
