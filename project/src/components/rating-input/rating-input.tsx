@@ -18,6 +18,7 @@ function RatingInput({title, count, currRating, fieldChangeHandler}: RatingInput
         id={`${count}-stars`}
         type="radio"
         checked={count === Number(currRating)}
+        required
       />
       <label
         htmlFor={`${count}-stars`}

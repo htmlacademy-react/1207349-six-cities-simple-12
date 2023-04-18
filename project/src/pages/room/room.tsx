@@ -1,16 +1,17 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { AuthorizationStatus, GALLERY_DISPLAY_COUNT } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchNearPlacesOffersAction, fetchReviewsAction } from '../../store/api-actions';
+import { getNearPlacesOffers, getOffers, getReviews } from '../../store/offers-data/selectors';
+import { getAuthorizationStatus } from '../../store/user-processe/selectors';
+import { AuthorizationStatus, GALLERY_DISPLAY_COUNT, REVIEWS_DISPLAY_COUNT } from '../../const';
+import { sortingReviews } from '../../utils';
 import NotFound from '../../pages/not-found/not-found';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewList from '../../components/review-list/review-list';
 import Map from '../../components/map/map';
 import Offers from '../../components/offers/offers';
 import Layout from '../../components/layout/layout';
-import { getNearPlacesOffers, getOffers, getReviews } from '../../store/offers-data/selectors';
-import { getAuthorizationStatus } from '../../store/user-processe/selectors';
 
 function Room(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ function Room(): JSX.Element {
   const offers = useAppSelector(getOffers);
   const offer = offers.find((element) => element.id === offerId);
   const nearPlacesOffers = useAppSelector(getNearPlacesOffers);
-  const reviews = useAppSelector(getReviews);
+  const reviews = sortingReviews([...useAppSelector(getReviews)]).slice(0, REVIEWS_DISPLAY_COUNT);
   const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
 
   if (offer === undefined) {

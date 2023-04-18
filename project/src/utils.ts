@@ -1,7 +1,8 @@
 import { Offer } from './types/offer';
 import { SortingOption } from './const';
+import { Review } from './types/review';
 
-export const sortingOffers = (offers: Offer[], type: string) => {
+export const sortingOffers = (offers: Offer[], type: string): Offer[] => {
   switch (type) {
     case SortingOption.lth:
       offers.sort((a, b) => a.price - b.price);
@@ -15,4 +16,22 @@ export const sortingOffers = (offers: Offer[], type: string) => {
   }
 
   return offers;
+};
+
+export const sortingReviews = (reviews: Review[]): Review[] => {
+  reviews.sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+
+    if (dateA > dateB) {
+      return -1;
+    }
+    if (dateA < dateB) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  return reviews;
 };

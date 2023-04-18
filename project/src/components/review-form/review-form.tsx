@@ -18,6 +18,13 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
 
   const fieldChangeHandler = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = evt.target;
+
+    if (name === 'comment' && value.length < 50) {
+      evt.target.setCustomValidity(`The minimum number of characters is 50. Text length now: ${value.length}`);
+    } else {
+      evt.target.setCustomValidity('');
+    }
+
     setFormData({...formData, [name]: value});
   };
 
@@ -52,6 +59,7 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
         value={formData.comment}
         name="comment"
         placeholder="Tell how was your stay, what you like and what can be improved"
+        required
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">

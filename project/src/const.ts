@@ -2,6 +2,8 @@ import { City } from './types/offer';
 
 export const GALLERY_DISPLAY_COUNT = 6;
 
+export const REVIEWS_DISPLAY_COUNT = 10;
+
 export enum AppRoute {
   Root = '/',
   Login = '/login',
