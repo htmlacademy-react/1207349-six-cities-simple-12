@@ -15,7 +15,7 @@ function LoginForm(): JSX.Element {
     const {name, value} = evt.target;
 
     if (name === 'password' && !/^(?=.*[a-zA-Z])(?=.*\d)(?=.{1,}$)/.test(value)) {
-      evt.target.setCustomValidity('Пароль должен состоять минимум из одной буквы и цифры.');
+      evt.target.setCustomValidity('The password must consist of at least one letter and a number.');
     } else {
       evt.target.setCustomValidity('');
     }
