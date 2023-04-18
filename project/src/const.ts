@@ -16,6 +16,13 @@ export enum NameSpace {
   User = 'USER',
 }
 
+export enum RequestStatus {
+  Idle = 'IDLE',
+  Pending = 'PENDING',
+  Fulfilled = 'FULFILLED',
+  Rejected = 'REJECTED',
+}
+
 export enum APIRoute {
   Offers = '/hotels',
   NearPlacesOffers = '/hotels/{hotelId}/nearby',

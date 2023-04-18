@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { NameSpace } from '../../const';
+import { NameSpace, RequestStatus } from '../../const';
 import { DataProcess } from '../../types/state';
 import { fetchNearPlacesOffersAction, fetchOffersAction, fetchReviewsAction, publishReviewAction } from '../api-actions';
 
@@ -8,6 +8,7 @@ const initialState: DataProcess = {
   nearPlacesOffers: [],
   reviews: [],
   isOffersDataLoading: false,
+  reviewsPublishStatus: RequestStatus.Idle,
 };
 
 export const offersData = createSlice({
@@ -33,8 +34,15 @@ export const offersData = createSlice({
       .addCase(fetchReviewsAction.fulfilled, (state, action) => {
         state.reviews = action.payload;
       })
+      .addCase(publishReviewAction.pending, (state) => {
+        state.reviewsPublishStatus = RequestStatus.Pending;
+      })
       .addCase(publishReviewAction.fulfilled, (state, action) => {
         state.reviews = action.payload;
+        state.reviewsPublishStatus = RequestStatus.Fulfilled;
+      })
+      .addCase(publishReviewAction.rejected, (state) => {
+        state.reviewsPublishStatus = RequestStatus.Rejected;
       });
   }
 });

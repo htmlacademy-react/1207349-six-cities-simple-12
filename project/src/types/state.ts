@@ -2,7 +2,7 @@ import { store } from '../store/index';
 import { City, Offer } from '../types/offer';
 import { Review } from '../types/review';
 import { UserData } from '../types/user-data';
-import { AuthorizationStatus, SortingOption } from '../const';
+import { AuthorizationStatus, RequestStatus, SortingOption } from '../const';
 
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
@@ -14,6 +14,7 @@ export type DataProcess = {
   nearPlacesOffers: Offer[];
   reviews: Review[];
   isOffersDataLoading: boolean;
+  reviewsPublishStatus: RequestStatus;
 };
 
 export type OffersProcess = {
