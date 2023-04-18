@@ -7,72 +7,70 @@ import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';
 import { ReviewData } from '../types/review-data';
 import { dropToken, saveToken } from '../services/token';
-import { APIRoute, AppRoute, AuthorizationStatus } from '../const';
-import { loadNearPlacesOffers, loadOffers, loadReviews, loadUser, publishReview, redirectToRoute, requireAuthorization, setOffersDataLoadingStatus } from './action';
+import { APIRoute, AppRoute } from '../const';
+import { redirectToRoute } from './action';
 
-function createAsyncThunkTeamplate<ThunkArg = undefined>() {
-  return createAsyncThunk<void, ThunkArg, {
+function createAsyncThunkTeamplate<Returned = void, ThunkArg = undefined>() {
+  return createAsyncThunk<Returned, ThunkArg, {
     dispatch: AppDispatch;
     state: State;
     extra: AxiosInstance;
   }>;
 }
 
-export const fetchOffersAction = createAsyncThunkTeamplate()(
+export const fetchOffersAction = createAsyncThunkTeamplate<Offer[]>()(
   'data/loadOffers',
-  async (_arg, {dispatch, extra: api}) => {
-    dispatch(setOffersDataLoadingStatus(true));
+  async (_arg, {extra: api}) => {
     const {data} = await api.get<Offer[]>(APIRoute.Offers);
-    dispatch(setOffersDataLoadingStatus(false));
-    dispatch(loadOffers(data));
+
+    return data;
   },
 );
 
-export const fetchNearPlacesOffersAction = createAsyncThunkTeamplate<number>()(
+export const fetchNearPlacesOffersAction = createAsyncThunkTeamplate<Offer[], number>()(
   'data/loadNearPlacesOffers',
-  async (hotelId, {dispatch, extra: api}) => {
+  async (hotelId, {extra: api}) => {
     const {data} = await api.get<Offer[]>(APIRoute.NearPlacesOffers.replace('{hotelId}', hotelId.toString()));
-    dispatch(loadNearPlacesOffers(data));
+
+    return data;
   },
 );
 
-export const fetchReviewsAction = createAsyncThunkTeamplate<number>()(
+export const fetchReviewsAction = createAsyncThunkTeamplate<Review[], number>()(
   'data/loadReviews',
-  async (hotelId, {dispatch, extra: api}) => {
+  async (hotelId, {extra: api}) => {
     const {data} = await api.get<Review[]>(APIRoute.Reviews.replace('{hotelId}', hotelId.toString()));
-    dispatch(loadReviews(data));
+
+    return data;
   },
 );
 
-export const publishReviewAction = createAsyncThunkTeamplate<ReviewData>()(
+export const publishReviewAction = createAsyncThunkTeamplate<Review[], ReviewData>()(
   'data/publishReviews',
-  async ({rating, comment, hotelId}, {dispatch, extra: api}) => {
+  async ({rating, comment, hotelId}, {extra: api}) => {
     const {data} = await api.post<Review[]>(APIRoute.Reviews.replace('{hotelId}', hotelId.toString()), {rating, comment});
-    dispatch(publishReview(data));
+
+    return data;
   },
 );
 
-export const checkAuthAction = createAsyncThunkTeamplate()(
+export const checkAuthAction = createAsyncThunkTeamplate<UserData>()(
   'user/checkAuth',
-  async (_arg, {dispatch, extra: api}) => {
-    try {
-      const {data} = await api.get<UserData>(APIRoute.Login);
-      dispatch(loadUser(data));
-      dispatch(requireAuthorization(AuthorizationStatus.Auth));
-    } catch {
-      dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
-    }
+  async (_arg, {extra: api}) => {
+    const {data} = await api.get<UserData>(APIRoute.Login);
+
+    return data;
   },
 );
 
-export const loginAction = createAsyncThunkTeamplate<AuthData>()(
+export const loginAction = createAsyncThunkTeamplate<UserData, AuthData>()(
   'user/login',
   async ({login: email, password}, {dispatch, extra: api}) => {
     const {data} = await api.post<UserData>(APIRoute.Login, {email, password});
     saveToken(data.token);
-    dispatch(loadUser(data));
-    dispatch(requireAuthorization(AuthorizationStatus.Auth));
     dispatch(redirectToRoute(AppRoute.Root));
+
+    return data;
   },
 );
 
@@ -81,8 +79,6 @@ export const logoutAction = createAsyncThunkTeamplate()(
   async (_arg, {dispatch, extra: api}) => {
     await api.delete(APIRoute.Logout);
     dropToken();
-    dispatch(loadUser(null));
-    dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
     dispatch(redirectToRoute(AppRoute.Login));
   },
 );

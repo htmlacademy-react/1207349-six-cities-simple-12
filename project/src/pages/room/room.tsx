@@ -1,19 +1,19 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
 import { useEffect } from 'react';
-import { AuthorizationStatus, GALLERY_DISPLAY_COUNT } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchNearPlacesOffersAction, fetchReviewsAction } from '../../store/api-actions';
+import { getNearPlacesOffers, getOffers, getReviews } from '../../store/offers-data/selectors';
+import { getAuthorizationStatus } from '../../store/user-processe/selectors';
+import { AuthorizationStatus, GALLERY_DISPLAY_COUNT, REVIEWS_DISPLAY_COUNT } from '../../const';
+import { sortingReviews } from '../../utils';
 import NotFound from '../../pages/not-found/not-found';
-import Header from '../../components/header/header';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewList from '../../components/review-list/review-list';
 import Map from '../../components/map/map';
 import Offers from '../../components/offers/offers';
+import Layout from '../../components/layout/layout';
 
 function Room(): JSX.Element {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-
   const dispatch = useAppDispatch();
 
   const offerId = Number(useParams().id);
@@ -23,22 +23,21 @@ function Room(): JSX.Element {
     dispatch(fetchReviewsAction(offerId));
   }, [dispatch, offerId]);
 
-  const offers = useAppSelector((state) => state.offers);
+  const offers = useAppSelector(getOffers);
   const offer = offers.find((element) => element.id === offerId);
-  const nearPlacesOffers = useAppSelector((state) => state.nearPlacesOffers);
-  const reviews = useAppSelector((state) => state.reviews);
-  const isAuth = useAppSelector((state) => state.authorizationStatus === AuthorizationStatus.Auth);
+  const nearPlacesOffers = useAppSelector(getNearPlacesOffers);
+  const reviews = sortingReviews([...useAppSelector(getReviews)]).slice(0, REVIEWS_DISPLAY_COUNT);
+  const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
 
   if (offer === undefined) {
     return <NotFound />;
   }
 
-  const {title, rating, isPremium, images, type, bedrooms, maxAdults, price, goods, host, description, city} = offer;
+  const {title, rating, isPremium, images, type, bedrooms, maxAdults, price, goods, host, description, city, id} = offer;
   const {name, avatarUrl, isPro} = host;
 
   return (
-    <div className="page">
-      <Header />
+    <Layout>
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
@@ -110,16 +109,16 @@ function Room(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map city={city} offers={nearPlacesOffers} activeCard={activeCard} className={'property__map'} />
+          <Map city={city} offers={[...nearPlacesOffers, offer]} activeCard={id} className={'property__map'} />
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <Offers offers={nearPlacesOffers} className={'near-places__list'} cardType={'near-places'} setActiveCard={setActiveCard} />
+            <Offers offers={nearPlacesOffers} className={'near-places__list'} cardType={'near-places'} />
           </section>
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }
 

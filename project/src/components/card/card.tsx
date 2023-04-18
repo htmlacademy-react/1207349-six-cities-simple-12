@@ -1,18 +1,22 @@
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 import { Offer } from '../../types/offer';
 import { AppRoute } from '../../const';
 
 type CardProps = {
   offer: Offer;
   cardType: string;
-  setActiveCard: (id: number | null) => void;
+  setActiveCard?: (id: number | null) => void;
 }
 
 function Card({offer, cardType, setActiveCard}: CardProps): JSX.Element {
   const {id, previewImage, title, isPremium, type, rating, price} = offer;
 
   return (
-    <article className={`${cardType}__card place-card`} onMouseOver={() => setActiveCard(id)}>
+    <article
+      className={`${cardType}__card place-card`}
+      onMouseOver={() => setActiveCard && setActiveCard(id)}
+    >
       {isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
@@ -46,4 +50,4 @@ function Card({offer, cardType, setActiveCard}: CardProps): JSX.Element {
   );
 }
 
-export default Card;
+export default memo(Card);

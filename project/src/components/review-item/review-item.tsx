@@ -5,7 +5,7 @@ type ReviewItemProps = {
   review: Review;
 }
 
-function ReviewItem({review}:ReviewItemProps): JSX.Element {
+function ReviewItem({review}: ReviewItemProps): JSX.Element {
   const {user, rating, date, comment} = review;
   const {avatarUrl, name} = user;
   const dateObj = new Date(date);
