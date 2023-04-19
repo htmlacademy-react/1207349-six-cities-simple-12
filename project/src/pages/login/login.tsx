@@ -5,7 +5,7 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import Layout from '../../components/layout/layout';
 import LoginForm from '../../components/login-form/login-form';
 import { getCity } from '../../store/offers-process/selectors';
-import { getAuthorizationStatus } from '../../store/user-processe/selectors';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 
 function Login(): JSX.Element {
   const navigate = useNavigate();

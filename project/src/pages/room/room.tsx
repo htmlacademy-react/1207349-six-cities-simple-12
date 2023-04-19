@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchNearPlacesOffersAction, fetchReviewsAction } from '../../store/api-actions';
 import { getNearPlacesOffers, getOffers, getReviews } from '../../store/offers-data/selectors';
-import { getAuthorizationStatus } from '../../store/user-processe/selectors';
+import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import { AuthorizationStatus, GALLERY_DISPLAY_COUNT, REVIEWS_DISPLAY_COUNT } from '../../const';
 import { sortingReviews } from '../../utils';
 import NotFound from '../../pages/not-found/not-found';

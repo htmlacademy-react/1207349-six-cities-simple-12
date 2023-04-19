@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
-import { getAuthorizationStatus, getCurrentUser } from '../../store/user-processe/selectors';
+import { getAuthorizationStatus, getCurrentUser } from '../../store/user-process/selectors';
 
 
 function HeaderNav(): JSX.Element {
