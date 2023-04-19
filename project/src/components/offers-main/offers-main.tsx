@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAppSelector } from '../../hooks';
-import { sortingOffers } from '../../utils';
+import { sortingOffers } from '../../utils/utils';
 import { City, Offer } from '../../types/offer';
 import Offers from '../../components/offers/offers';
 import Sorting from '../../components/sorting/sorting';

@@ -5,7 +5,7 @@ import { fetchNearPlacesOffersAction, fetchReviewsAction } from '../../store/api
 import { getNearPlacesOffers, getOffers, getReviews } from '../../store/offers-data/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import { AuthorizationStatus, GALLERY_DISPLAY_COUNT, REVIEWS_DISPLAY_COUNT } from '../../const';
-import { sortingReviews } from '../../utils';
+import { sortingReviews } from '../../utils/utils';
 import NotFound from '../../pages/not-found/not-found';
 import ReviewForm from '../../components/review-form/review-form';
 import ReviewList from '../../components/review-list/review-list';
