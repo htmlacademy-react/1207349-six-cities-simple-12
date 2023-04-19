@@ -2,8 +2,8 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { SortingOption } from '../../const';
-import { getSorting } from '../../store/offers-processe/selectors';
-import { changeSorting } from '../../store/offers-processe/offers-processe';
+import { getSorting } from '../../store/offers-process/selectors';
+import { changeSorting } from '../../store/offers-process/offers-process';
 
 function Sorting(): JSX.Element {
   const [isOpenSorting, setOpenSorting] = useState(false);

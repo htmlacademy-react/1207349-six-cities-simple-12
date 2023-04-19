@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { NameSpace } from '../const';
-import { offersProcess } from './offers-processe/offers-processe';
+import { offersProcess } from './offers-process/offers-process';
 import { offersData } from './offers-data/offers-data';
 import { userProcess } from './user-processe/user-process';
 

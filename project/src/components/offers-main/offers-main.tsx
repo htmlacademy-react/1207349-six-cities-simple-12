@@ -5,7 +5,7 @@ import { City, Offer } from '../../types/offer';
 import Offers from '../../components/offers/offers';
 import Sorting from '../../components/sorting/sorting';
 import Map from '../../components/map/map';
-import { getSorting } from '../../store/offers-processe/selectors';
+import { getSorting } from '../../store/offers-process/selectors';
 
 type OffersMainProps = {
   offers: Offer[];

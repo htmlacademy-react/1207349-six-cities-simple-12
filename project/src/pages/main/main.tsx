@@ -4,7 +4,7 @@ import Tabs from '../../components/tabs/tabs';
 import OffersMainEmpty from '../../components/offers-main-empty/offers-main-empty';
 import OffersMain from '../../components/offers-main/offers-main';
 import Layout from '../../components/layout/layout';
-import { getCity } from '../../store/offers-processe/selectors';
+import { getCity } from '../../store/offers-process/selectors';
 import { getOffers } from '../../store/offers-data/selectors';
 
 function Main(): JSX.Element {

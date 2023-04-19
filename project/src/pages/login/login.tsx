@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import Layout from '../../components/layout/layout';
 import LoginForm from '../../components/login-form/login-form';
-import { getCity } from '../../store/offers-processe/selectors';
+import { getCity } from '../../store/offers-process/selectors';
 import { getAuthorizationStatus } from '../../store/user-processe/selectors';
 
 function Login(): JSX.Element {
