@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { OffersProcess } from '../../types/state';
 import { city, NameSpace, SortingOption } from '../../const';
 import { City } from '../../types/offer';
