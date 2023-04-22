@@ -7,13 +7,13 @@ import { Review } from '../types/review';
 export const makeFakeUser = (): UserData => ({
   avatarUrl: internet.avatar(),
   email: internet.email(),
-  id: datatype.number(10),
+  id: datatype.number(),
   isPro: datatype.boolean(),
   name: internet.userName(),
   token: datatype.uuid(),
 } as UserData);
 
-const makeFakeOffer = (): Offer => ({
+export const makeFakeOffer = (): Offer => ({
   bedrooms: datatype.number(5),
   city: {
     name: address.cityName(),
@@ -25,13 +25,13 @@ const makeFakeOffer = (): Offer => ({
   description: lorem.paragraph(),
   goods: new Array(datatype.number(5)).fill(null).map(() => random.words()),
   host: {
-    id: datatype.number(10),
+    id: datatype.number(),
     avatarUrl: internet.avatar(),
     name: internet.userName(),
     isPro: datatype.boolean(),
   },
-  id: datatype.number(10),
-  images: new Array(datatype.number(5)).fill(null).map(() => image.city()),
+  id: datatype.number(),
+  images: new Array(datatype.number({min: 6, max: 10})).fill(null).map(() => image.city()),
   isPremium: datatype.boolean(),
   location: {
     latitude: Number(address.latitude()),
@@ -46,13 +46,13 @@ const makeFakeOffer = (): Offer => ({
 } as Offer);
 
 export const makeFakeOffers = (quantity?: number): Offer[] =>
-  new Array(quantity ?? datatype.number(15)).fill(null).map(() => makeFakeOffer());
+  new Array(quantity ?? datatype.number({min: 1, max: 10})).fill(null).map(() => makeFakeOffer());
 
-const makeFakeReview = (): Review => ({
-  id: datatype.number(10),
+export const makeFakeReview = (): Review => ({
+  id: datatype.number(),
   user: {
     avatarUrl: internet.avatar(),
-    id: datatype.number(10),
+    id: datatype.number(),
     isPro: datatype.boolean(),
     name: internet.userName(),
   },
@@ -62,4 +62,4 @@ const makeFakeReview = (): Review => ({
 } as unknown as Review);
 
 export const makeFakeReviews = (quantity?: number): Review[] =>
-  new Array(quantity ?? datatype.number(10)).fill(null).map(() => makeFakeReview());
+  new Array(quantity ?? datatype.number({min: 1, max: 10})).fill(null).map(() => makeFakeReview());
