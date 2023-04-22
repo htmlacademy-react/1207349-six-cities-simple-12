@@ -3,7 +3,7 @@ import './loading.css';
 function Loading(): JSX.Element {
   return (
     <div className="page page--gray page--main">
-      <span className="loader">
+      <span className="loader" data-testid="loader">
         <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#4481c3">
           <g fill="none" fillRule="evenodd">
             <g transform="translate(1 1)" strokeWidth="2">
