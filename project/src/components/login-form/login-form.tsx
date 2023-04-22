@@ -40,6 +40,7 @@ function LoginForm(): JSX.Element {
           name="login"
           placeholder="Email"
           required
+          data-testid="login"
         />
       </div>
       <div className="login__input-wrapper form__input-wrapper">
@@ -53,6 +54,7 @@ function LoginForm(): JSX.Element {
           placeholder="Password"
           minLength={2}
           required
+          data-testid="password"
         />
       </div>
       <button className="login__submit form__submit button" type="submit">Sign in</button>

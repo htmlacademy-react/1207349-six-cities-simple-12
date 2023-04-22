@@ -12,7 +12,7 @@ function HeaderNav(): JSX.Element {
   const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
 
   return (
-    <nav className="header__nav">
+    <nav className="header__nav" role="navigation">
       <ul className="header__nav-list">
         <li className="header__nav-item user">
           {isAuth ?

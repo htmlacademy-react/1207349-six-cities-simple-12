@@ -49,7 +49,7 @@ function Map({city, offers, activeCard, className}: MapProps): JSX.Element {
   }, [map, city]);
 
   return (
-    <section className={`map ${className}`} ref={mapRef} />
+    <section className={`map ${className}`} ref={mapRef} data-testid="map" />
   );
 }
 
