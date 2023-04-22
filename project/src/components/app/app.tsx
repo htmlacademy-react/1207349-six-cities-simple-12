@@ -6,8 +6,6 @@ import Room from '../../pages/room/room';
 import NotFound from '../../pages/not-found/not-found';
 import Loading from '../../pages/loading/loading';
 import { useAppSelector } from '../../hooks';
-import HistoryRouter from '../history-route/history-route';
-import browserHistory from '../../browser-history';
 import { getOffersDataLoadingStatus } from '../../store/offers-data/selectors';
 
 function App(): JSX.Element {
@@ -20,30 +18,28 @@ function App(): JSX.Element {
   }
 
   return (
-    <HistoryRouter history={browserHistory}>
-      <Routes>
-        <Route
-          path={AppRoute.Root}
-          element={
-            <Main />
-          }
-        />
-        <Route
-          path={AppRoute.Login}
-          element={<Login />}
-        />
-        <Route
-          path={AppRoute.Offer}
-          element={
-            <Room />
-          }
-        />
-        <Route
-          path='*'
-          element={<NotFound />}
-        />
-      </Routes>
-    </HistoryRouter>
+    <Routes>
+      <Route
+        path={AppRoute.Root}
+        element={
+          <Main />
+        }
+      />
+      <Route
+        path={AppRoute.Login}
+        element={<Login />}
+      />
+      <Route
+        path={AppRoute.Offer}
+        element={
+          <Room />
+        }
+      />
+      <Route
+        path='*'
+        element={<NotFound />}
+      />
+    </Routes>
   );
 }
 
