@@ -8,7 +8,7 @@ const offers = makeFakeOffers();
 const nearPlacesOffers = makeFakeOffers(3);
 const reviews = makeFakeReviews();
 
-describe('Reducer: user', () => {
+describe('Reducer: offersData', () => {
   let state: DataProcess;
 
   beforeEach(() => {
