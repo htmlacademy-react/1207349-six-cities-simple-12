@@ -19,12 +19,12 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
     hotelId: offerId,
   });
 
-  const fieldChangeHandler = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = evt.target;
     setFormData({...formData, [name]: value});
   };
 
-  const formSubmitHandler = (evt: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(publishReviewAction(formData));
     setFormData({
@@ -35,7 +35,7 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post" onSubmit={formSubmitHandler}>
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {RATING_LABELS.map((title, i, arr) => (
@@ -44,12 +44,12 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
             count={arr.length - i}
             title={title}
             currRating={formData.rating}
-            fieldChangeHandler={fieldChangeHandler}
+            onChange={handleInputChange}
           />
         ))}
       </div>
       <textarea
-        onChange={fieldChangeHandler}
+        onChange={handleInputChange}
         disabled={publishReviewsStatus === RequestStatus.Pending}
         className="reviews__textarea form__textarea"
         id="comment"
@@ -57,12 +57,13 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
         name="comment"
         placeholder="Tell how was your stay, what you like and what can be improved"
         required
+        data-testid="comment"
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at&nbsp;
           {formData.comment.length > 300 ? 'most' : 'least'}&nbsp;
-          {formData.comment.length > 300 ? <b className="reviews__text-amount">300 Сharacters</b> : <b className="reviews__text-amount">50 characters</b>}.
+          {formData.comment.length > 300 ? <b className="reviews__text-amount">300 characters</b> : <b className="reviews__text-amount">50 characters</b>}.
         </p>
         <button
           className="reviews__submit form__submit button"

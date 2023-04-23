@@ -1,6 +1,6 @@
-import { Offer } from './types/offer';
-import { SortingOption } from './const';
-import { Review } from './types/review';
+import { Offer } from '../types/offer';
+import { SortingOption } from '../const';
+import { Review } from '../types/review';
 
 export const sortingOffers = (offers: Offer[], type: string): Offer[] => {
   switch (type) {

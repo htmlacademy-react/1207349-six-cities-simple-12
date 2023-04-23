@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MouseEvent, memo } from 'react';
 import { City } from '../../types/offer';
 import { useAppDispatch } from '../../hooks';
-import { changeCity } from '../../store/offers-processe/offers-processe';
+import { changeCity } from '../../store/offers-process/offers-process';
 
 type TabLinkProps = {
   city: City;
@@ -13,8 +13,8 @@ type TabLinkProps = {
 function TabLink({city, selectedCity}: TabLinkProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const clickHandler = (event: MouseEvent<HTMLElement>) => {
-    event.preventDefault();
+  const handleLinkClick = (evt: MouseEvent<HTMLElement>) => {
+    evt.preventDefault();
     dispatch(changeCity(city));
   };
 
@@ -23,7 +23,7 @@ function TabLink({city, selectedCity}: TabLinkProps): JSX.Element {
       <Link
         to="/"
         className={classNames('locations__item-link tabs__item', {'tabs__item--active': city.name === selectedCity})}
-        onClick={clickHandler}
+        onClick={handleLinkClick}
       >
         <span>{city.name}</span>
       </Link>

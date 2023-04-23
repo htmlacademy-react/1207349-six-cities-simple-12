@@ -4,14 +4,14 @@ type RatingInputProps = {
   title: string;
   count: number;
   currRating: number;
-  fieldChangeHandler: (evt: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function RatingInput({title, count, currRating, fieldChangeHandler}: RatingInputProps): JSX.Element {
+function RatingInput({title, count, currRating, onChange}: RatingInputProps): JSX.Element {
   return (
     <>
       <input
-        onChange={fieldChangeHandler}
+        onChange={onChange}
         className="form__rating-input visually-hidden"
         name="rating"
         value={count}

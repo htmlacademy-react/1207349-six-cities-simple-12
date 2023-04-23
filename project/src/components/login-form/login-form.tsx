@@ -11,7 +11,7 @@ function LoginForm(): JSX.Element {
     password: '',
   });
 
-  const fieldChangeHandler = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = evt.target;
 
     if (name === 'password' && !/^(?=.*[a-zA-Z])(?=.*\d)(?=.{1,}$)/.test(value)) {
@@ -23,29 +23,30 @@ function LoginForm(): JSX.Element {
     setFormData({...formData, [name]: value});
   };
 
-  const formSubmitHandler = (evt: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(loginAction(formData));
   };
 
   return (
-    <form className="login__form form" action="" onSubmit={formSubmitHandler}>
+    <form className="login__form form" action="" onSubmit={handleFormSubmit}>
       <div className="login__input-wrapper form__input-wrapper">
         <label className="visually-hidden">E-mail</label>
         <input
-          onChange={fieldChangeHandler}
+          onChange={handleInputChange}
           value={formData.login}
           className="login__input form__input"
           type="email"
           name="login"
           placeholder="Email"
           required
+          data-testid="login"
         />
       </div>
       <div className="login__input-wrapper form__input-wrapper">
         <label className="visually-hidden">Password</label>
         <input
-          onChange={fieldChangeHandler}
+          onChange={handleInputChange}
           value={formData.password}
           className="login__input form__input"
           type="password"
@@ -53,6 +54,7 @@ function LoginForm(): JSX.Element {
           placeholder="Password"
           minLength={2}
           required
+          data-testid="password"
         />
       </div>
       <button className="login__submit form__submit button" type="submit">Sign in</button>

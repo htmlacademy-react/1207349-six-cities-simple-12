@@ -1,4 +1,4 @@
-type Host = {
+export type Host = {
   id: number;
   avatarUrl: string;
   name: string;

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
-import { getAuthorizationStatus, getCurrentUser } from '../../store/user-processe/selectors';
+import { getAuthorizationStatus, getCurrentUser } from '../../store/user-process/selectors';
 
 
 function HeaderNav(): JSX.Element {
@@ -12,7 +12,7 @@ function HeaderNav(): JSX.Element {
   const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
 
   return (
-    <nav className="header__nav">
+    <nav className="header__nav" role="navigation">
       <ul className="header__nav-list">
         <li className="header__nav-item user">
           {isAuth ?

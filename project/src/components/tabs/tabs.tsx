@@ -1,6 +1,6 @@
 import { city } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { getCity } from '../../store/offers-processe/selectors';
+import { getCity } from '../../store/offers-process/selectors';
 import TabLink from '../tab-link/tab-link';
 
 
