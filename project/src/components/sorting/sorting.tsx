@@ -10,13 +10,9 @@ function Sorting(): JSX.Element {
 
   const selectedSorting = useAppSelector(getSorting);
 
-  function openSortingHandler() {
-    setOpenSorting(!isOpenSorting);
-  }
-
   const dispatch = useAppDispatch();
 
-  function chooseSortHandler(sorting: SortingOption) {
+  function handleSortOptionClick (sorting: SortingOption) {
     dispatch(changeSorting(sorting));
     setOpenSorting(false);
   }
@@ -24,7 +20,7 @@ function Sorting(): JSX.Element {
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by&nbsp;</span>
-      <span className="places__sorting-type" tabIndex={0} onClick={openSortingHandler}>
+      <span className="places__sorting-type" tabIndex={0} onClick={() => setOpenSorting(!isOpenSorting)}>
         {selectedSorting}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
@@ -37,7 +33,7 @@ function Sorting(): JSX.Element {
               key={item}
               className={classNames('places__option', {'places__option--active': item === selectedSorting })}
               tabIndex={0}
-              onClick={() => chooseSortHandler(item)}
+              onClick={() => handleSortOptionClick(item)}
             >
               {item}
             </li>

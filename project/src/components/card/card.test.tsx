@@ -82,12 +82,12 @@ describe('Component: Card', () => {
   });
 
   it('should change active card when user hovered to link', async () => {
-    const hoverHandler = jest.fn();
+    const handleCardMouseOver = jest.fn();
 
     render(
       <Provider store={store}>
         <HistoryRouter history={history}>
-          <Card offer={offer} cardType={'cities__places-list tabs__content'} onMouseOver={hoverHandler} />
+          <Card offer={offer} cardType={'cities__places-list tabs__content'} onMouseOver={handleCardMouseOver} />
         </HistoryRouter>
       </Provider>
     );
@@ -95,6 +95,6 @@ describe('Component: Card', () => {
     await userEvent.hover(screen.getAllByRole('link')[0]);
     await userEvent.hover(screen.getAllByRole('link')[1]);
 
-    expect(hoverHandler).toBeCalledTimes(2);
+    expect(handleCardMouseOver).toBeCalledTimes(2);
   });
 });

@@ -19,12 +19,12 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
     hotelId: offerId,
   });
 
-  const fieldChangeHandler = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = evt.target;
     setFormData({...formData, [name]: value});
   };
 
-  const formSubmitHandler = (evt: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(publishReviewAction(formData));
     setFormData({
@@ -35,7 +35,7 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post" onSubmit={formSubmitHandler}>
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {RATING_LABELS.map((title, i, arr) => (
@@ -44,12 +44,12 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
             count={arr.length - i}
             title={title}
             currRating={formData.rating}
-            onChange={fieldChangeHandler}
+            onChange={handleInputChange}
           />
         ))}
       </div>
       <textarea
-        onChange={fieldChangeHandler}
+        onChange={handleInputChange}
         disabled={publishReviewsStatus === RequestStatus.Pending}
         className="reviews__textarea form__textarea"
         id="comment"
