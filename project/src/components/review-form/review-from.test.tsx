@@ -1,4 +1,3 @@
-
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { configureMockStore } from '@jedmao/redux-mock-store';
