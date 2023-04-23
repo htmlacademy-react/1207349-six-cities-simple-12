@@ -13,8 +13,8 @@ type TabLinkProps = {
 function TabLink({city, selectedCity}: TabLinkProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const handleLinkClick = (event: MouseEvent<HTMLElement>) => {
-    event.preventDefault();
+  const handleLinkClick = (evt: MouseEvent<HTMLElement>) => {
+    evt.preventDefault();
     dispatch(changeCity(city));
   };
 
