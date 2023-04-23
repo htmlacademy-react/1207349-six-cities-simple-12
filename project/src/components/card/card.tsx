@@ -6,16 +6,16 @@ import { AppRoute } from '../../const';
 type CardProps = {
   offer: Offer;
   cardType: string;
-  setActiveCard?: (id: number | null) => void;
+  onMouseOver?: (id: number | null) => void;
 }
 
-function Card({offer, cardType, setActiveCard}: CardProps): JSX.Element {
+function Card({offer, cardType, onMouseOver}: CardProps): JSX.Element {
   const {id, previewImage, title, isPremium, type, rating, price} = offer;
 
   return (
     <article
       className={`${cardType}__card place-card`}
-      onMouseOver={() => setActiveCard && setActiveCard(id)}
+      onMouseOver={() => onMouseOver && onMouseOver(id)}
     >
       {isPremium &&
         <div className="place-card__mark">

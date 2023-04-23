@@ -5,13 +5,13 @@ type OffersProps = {
   offers: Offer[];
   className: string;
   cardType: string;
-  setActiveCard?: (id: number | null) => void;
+  onMouseOver?: (id: number | null) => void;
 }
 
-function Offers({offers, className, cardType, setActiveCard}: OffersProps): JSX.Element {
+function Offers({offers, className, cardType, onMouseOver}: OffersProps): JSX.Element {
   return (
     <div className={className}>
-      {offers.map((offer) => <Card key={offer.id} offer={offer} cardType={cardType} setActiveCard={setActiveCard} />)}
+      {offers.map((offer) => <Card key={offer.id} offer={offer} cardType={cardType} onMouseOver={onMouseOver} />)}
     </div>
   );
 }

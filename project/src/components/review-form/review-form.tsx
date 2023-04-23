@@ -44,7 +44,7 @@ function ReviewForm({offerId}: ReviewFormProps): JSX.Element {
             count={arr.length - i}
             title={title}
             currRating={formData.rating}
-            fieldChangeHandler={fieldChangeHandler}
+            onChange={fieldChangeHandler}
           />
         ))}
       </div>

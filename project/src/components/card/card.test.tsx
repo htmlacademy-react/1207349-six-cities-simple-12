@@ -87,7 +87,7 @@ describe('Component: Card', () => {
     render(
       <Provider store={store}>
         <HistoryRouter history={history}>
-          <Card offer={offer} cardType={'cities__places-list tabs__content'} setActiveCard={hoverHandler} />
+          <Card offer={offer} cardType={'cities__places-list tabs__content'} onMouseOver={hoverHandler} />
         </HistoryRouter>
       </Provider>
     );
