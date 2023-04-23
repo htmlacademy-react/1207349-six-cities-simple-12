@@ -1,17 +1,20 @@
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../hooks';
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { AppRoute, AuthorizationStatus, city } from '../../const';
 import Layout from '../../components/layout/layout';
 import LoginForm from '../../components/login-form/login-form';
-import { getCity } from '../../store/offers-process/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
+import { changeCity } from '../../store/offers-process/offers-process';
 
 function Login(): JSX.Element {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const selectedCity = useAppSelector(getCity);
   const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
+
+  const cities = Object.values(city);
+  const randomCity = cities[Math.floor(Math.random() * cities.length)];
 
   useEffect(() => {
     if (isAuth) {
@@ -29,8 +32,13 @@ function Login(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <Link to={AppRoute.Root} className="locations__item-link">
-                <span>{selectedCity.name}</span>
+              <Link
+                to={AppRoute.Root}
+                className="locations__item-link"
+                onClick={() => dispatch(changeCity(randomCity))}
+                data-testid="login-city-link"
+              >
+                <span>{randomCity.name}</span>
               </Link>
             </div>
           </section>
