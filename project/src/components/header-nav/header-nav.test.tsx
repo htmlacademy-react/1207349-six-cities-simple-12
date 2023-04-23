@@ -5,7 +5,7 @@ import { createMemoryHistory } from 'history';
 import { MockStore, configureMockStore } from '@jedmao/redux-mock-store';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import HistoryRouter from '../history-route/history-route';
+import HistoryRouter from '../history-router/history-router';
 import { AuthorizationStatus, AppRoute } from '../../const';
 import { makeFakeUser } from '../../utils/mocks';
 import HeaderNav from './header-nav';

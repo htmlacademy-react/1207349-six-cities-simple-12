@@ -2,7 +2,7 @@ import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
 import { MockStore, configureMockStore } from '@jedmao/redux-mock-store';
 import { render, screen } from '@testing-library/react';
-import HistoryRouter from '../../components/history-route/history-route';
+import HistoryRouter from '../../components/history-router/history-router';
 import { AuthorizationStatus, city } from '../../const';
 import { makeFakeOffers } from '../../utils/mocks';
 import Main from './main';

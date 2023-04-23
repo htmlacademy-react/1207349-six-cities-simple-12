@@ -6,7 +6,7 @@ import { render, screen } from '@testing-library/react';
 import { AppRoute, AuthorizationStatus, GALLERY_DISPLAY_COUNT } from '../../const';
 import { makeFakeOffers } from '../../utils/mocks';
 import Room from './room';
-import HistoryRouter from '../../components/history-route/history-route';
+import HistoryRouter from '../../components/history-router/history-router';
 import { Route, Routes } from 'react-router-dom';
 
 const history = createMemoryHistory();

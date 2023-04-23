@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
 import { configureMockStore } from '@jedmao/redux-mock-store';
 import { render, screen } from '@testing-library/react';
-import HistoryRouter from '../history-route/history-route';
+import HistoryRouter from '../history-router/history-router';
 import { AuthorizationStatus, AppRoute, SortingOption, city } from '../../const';
 import { makeFakeOffers } from '../../utils/mocks';
 import App from './app';

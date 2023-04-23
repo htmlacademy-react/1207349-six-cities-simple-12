@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { configureMockStore } from '@jedmao/redux-mock-store';
 import { fireEvent, render, screen } from '@testing-library/react';
-import HistoryRouter from '../history-route/history-route';
+import HistoryRouter from '../history-router/history-router';
 import { AuthorizationStatus, AppRoute } from '../../const';
 import Header from './header';
 
