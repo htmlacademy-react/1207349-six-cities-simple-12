@@ -19,7 +19,7 @@ describe('Component: Sorting', () => {
   it('should render correctly', () => {
     render(fakeApp);
 
-    expect(screen.getByText('Sort by')).toBeInTheDocument();
+    expect(screen.getByText(/Sort by/)).toBeInTheDocument();
     expect(screen.getByText('Popular')).toBeInTheDocument();
   });
 
