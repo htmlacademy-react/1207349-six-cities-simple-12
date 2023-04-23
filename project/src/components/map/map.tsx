@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
-import leaflet from 'leaflet';
-import { UrlMarker } from '../../const';
+import leaflet, { Marker } from 'leaflet';
+import { DEFAULT_MAP_ZOOM, UrlMarker } from '../../const';
 import { City } from '../../types/offer';
 import { Offer } from '../../types/offer';
 import useMap from '../../hooks/use-map';
@@ -26,25 +26,28 @@ function Map({city, offers, activeCard, className}: MapProps): JSX.Element {
   const map = useMap(mapRef, city);
 
   useEffect(() => {
+    const markers = leaflet.layerGroup();
     if (map) {
       offers.forEach((offer) => {
-        leaflet
-          .marker({
-            lat: offer.location.latitude,
-            lng: offer.location.longitude,
-          }, {
-            icon: (offer.id === activeCard)
-              ? currentCustomIcon
-              : defaultCustomIcon,
-          })
-          .addTo(map);
+        const marker = new Marker({
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
+        });
+
+        marker.setIcon(offer.id === activeCard ? currentCustomIcon : defaultCustomIcon);
+        marker.addTo(markers);
       });
+      markers.addTo(map);
     }
+
+    return (() => {
+      markers.clearLayers();
+    });
   }, [map, offers, activeCard]);
 
   useEffect(() => {
     if (map) {
-      map.setView([city.location.latitude, city.location.longitude], city.location.zoom ?? 10);
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom ?? DEFAULT_MAP_ZOOM);
     }
   }, [map, city]);
 
