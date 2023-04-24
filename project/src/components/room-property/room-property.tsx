@@ -62,7 +62,7 @@ function RoomProperty({offer}: RoomPropertyProps): JSX.Element {
         </div>
         <RoomHost host={host} description={description} />
         <section className="property__reviews reviews">
-          {reviews.length > 0 && <ReviewList reviews={reviews} />}
+          {reviews.length && <ReviewList reviews={reviews} />}
           {isAuth && <ReviewForm offerId={id} />}
         </section>
       </div>
