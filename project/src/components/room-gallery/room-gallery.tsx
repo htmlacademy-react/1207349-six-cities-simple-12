@@ -1,4 +1,4 @@
-import { GALLERY_DISPLAY_COUNT } from '../../const';
+import { DisplayCount } from '../../const';
 
 type RoomGalleryProps = {
   images: string[];
@@ -9,7 +9,7 @@ function RoomGallery({images, title}: RoomGalleryProps): JSX.Element {
   return (
     <div className="property__gallery-container container">
       <div className="property__gallery">
-        {images.slice(0, GALLERY_DISPLAY_COUNT).map((image, i) => {
+        {images.slice(0, DisplayCount.Gallery).map((image, i) => {
           const key = `${image}-${i}`;
 
           return (

@@ -6,7 +6,7 @@ import Sorting from './sorting';
 
 const mockStore = configureMockStore();
 const store = mockStore({
-  OFFERS: {sorting: SortingOption.pop}
+  OFFERS: {sorting: SortingOption.Pop}
 });
 
 const fakeApp = (

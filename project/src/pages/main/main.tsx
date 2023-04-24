@@ -15,7 +15,7 @@ function Main(): JSX.Element {
     <Layout className="page--gray page--main">
       <main className={classNames('page__main page__main--index', {'page__main--index-empty': offers.length === 0})}>
         <Tabs />
-        {offers.length > 0
+        {offers.length
           ? <OffersMain offers={offers} selectedCity={selectedCity} />
           : <OffersMainEmpty selectedCity={selectedCity} /> }
       </main>

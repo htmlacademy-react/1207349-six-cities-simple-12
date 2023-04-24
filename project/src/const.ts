@@ -1,7 +1,5 @@
 import { City } from './types/offer';
 
-export const GALLERY_DISPLAY_COUNT = 6;
-export const REVIEWS_DISPLAY_COUNT = 10;
 export const DEFAULT_MAP_ZOOM = 10;
 
 export enum AppRoute {
@@ -38,15 +36,25 @@ export enum AuthorizationStatus {
 }
 
 export enum SortingOption {
-  pop = 'Popular',
-  lth = 'Price: low to high',
-  htl = 'Price: high to low',
-  top = 'Top rated first',
+  Pop = 'Popular',
+  Lth = 'Price: low to high',
+  Htl = 'Price: high to low',
+  Top = 'Top rated first',
 }
 
 export enum UrlMarker {
   Default = 'img/pin.svg',
   Current = 'img/pin-active.svg',
+}
+
+export enum DisplayCount {
+  Gallery = 6,
+  Reviews = 10,
+}
+
+export enum CommentLength {
+  Min = 50,
+  Max = 300,
 }
 
 export const RATING_LABELS: string[] = ['perfect', 'good', 'not bad', 'badly', 'terribly'];

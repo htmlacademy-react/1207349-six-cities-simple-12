@@ -5,7 +5,7 @@ import { City } from '../../types/offer';
 
 const initialState: OffersProcess = {
   city: city['Paris'],
-  sorting: SortingOption.pop,
+  sorting: SortingOption.Pop,
 };
 
 export const offersProcess = createSlice({

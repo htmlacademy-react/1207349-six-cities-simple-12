@@ -11,7 +11,7 @@ export const makeFakeUser = (): UserData => ({
   isPro: datatype.boolean(),
   name: internet.userName(),
   token: datatype.uuid(),
-} as UserData);
+});
 
 export const makeFakeOffer = (): Offer => ({
   bedrooms: datatype.number(5),
@@ -43,7 +43,7 @@ export const makeFakeOffer = (): Offer => ({
   rating: datatype.number(5),
   title: company.companyName(),
   type: random.word(),
-} as Offer);
+});
 
 export const makeFakeOffers = (quantity?: number): Offer[] =>
   new Array(quantity ?? datatype.number({min: 1, max: 10})).fill(null).map(() => makeFakeOffer());
@@ -59,7 +59,7 @@ export const makeFakeReview = (): Review => ({
   rating: datatype.number(5),
   date: date.past().toDateString(),
   comment: lorem.paragraph(3),
-} as unknown as Review);
+});
 
 export const makeFakeReviews = (quantity?: number): Review[] =>
   new Array(quantity ?? datatype.number({min: 1, max: 10})).fill(null).map(() => makeFakeReview());

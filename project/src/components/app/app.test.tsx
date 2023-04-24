@@ -14,7 +14,7 @@ const history = createMemoryHistory();
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const store = mockStore({
-  OFFERS: {city: city['Paris'], sorting: SortingOption.pop},
+  OFFERS: {city: city['Paris'], sorting: SortingOption.Pop},
   DATA: {reviews: [], offers: offers, nearPlacesOffers: []},
   USER: {authorizationStatus: AuthorizationStatus.Unknown},
 });
