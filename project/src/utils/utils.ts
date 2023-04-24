@@ -4,13 +4,13 @@ import { Review } from '../types/review';
 
 export const sortingOffers = (offers: Offer[], type: string): Offer[] => {
   switch (type) {
-    case SortingOption.lth:
+    case SortingOption.Lth:
       offers.sort((a, b) => a.price - b.price);
       break;
-    case SortingOption.htl:
+    case SortingOption.Htl:
       offers.sort((a, b) => b.price - a.price);
       break;
-    case SortingOption.top:
+    case SortingOption.Top:
       offers.sort((a, b) => b.rating - a.rating);
       break;
   }
