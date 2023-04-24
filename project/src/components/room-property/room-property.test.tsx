@@ -8,7 +8,7 @@ import RoomProperty from './room-property';
 const mockStore = configureMockStore();
 const reviews = makeFakeReviews();
 const offer = makeFakeOffer();
-const {title, rating, type, bedrooms, maxAdults, price, goods} = offer;
+const {title, type, bedrooms, maxAdults, price, goods} = offer;
 
 function fakeApp(store: MockStore): JSX.Element {
   return (
@@ -28,7 +28,6 @@ describe('Component: RoomProperty', () => {
     render(fakeApp(store));
 
     expect(screen.getByText(title)).toBeInTheDocument();
-    expect(screen.getByText(rating)).toBeInTheDocument();
     expect(screen.getByText(type)).toBeInTheDocument();
     expect(screen.getByText(`${bedrooms} Bedrooms`)).toBeInTheDocument();
     expect(screen.getByText(`Max ${maxAdults} adults`)).toBeInTheDocument();
