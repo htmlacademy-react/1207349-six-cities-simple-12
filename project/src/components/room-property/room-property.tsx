@@ -2,7 +2,7 @@ import { useAppSelector } from '../../hooks';
 import { getReviews } from '../../store/offers-data/selectors';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
 import { sortingReviews } from '../../utils/utils';
-import { AuthorizationStatus, REVIEWS_DISPLAY_COUNT } from '../../const';
+import { AuthorizationStatus, DisplayCount } from '../../const';
 import { Offer } from '../../types/offer';
 import ReviewForm from '../review-form/review-form';
 import ReviewList from '../review-list/review-list';
@@ -13,7 +13,7 @@ type RoomPropertyProps = {
 }
 
 function RoomProperty({offer}: RoomPropertyProps): JSX.Element {
-  const reviews = sortingReviews([...useAppSelector(getReviews)]).slice(0, REVIEWS_DISPLAY_COUNT);
+  const reviews = sortingReviews([...useAppSelector(getReviews)]).slice(0, DisplayCount.Reviews);
   const isAuth = useAppSelector(getAuthorizationStatus) === AuthorizationStatus.Auth;
 
   const {title, rating, isPremium, type, bedrooms, maxAdults, price, goods, host, description, id} = offer;

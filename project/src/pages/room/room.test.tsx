@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { createMemoryHistory } from 'history';
 import { MockStore, configureMockStore } from '@jedmao/redux-mock-store';
 import { render, screen } from '@testing-library/react';
-import { AppRoute, AuthorizationStatus, GALLERY_DISPLAY_COUNT } from '../../const';
+import { AppRoute, AuthorizationStatus, DisplayCount } from '../../const';
 import { makeFakeOffers } from '../../utils/mocks';
 import Room from './room';
 import HistoryRouter from '../../components/history-router/history-router';
@@ -40,7 +40,7 @@ describe('Page: Room', () => {
 
     expect(screen.getByText('Other places in the neighbourhood')).toBeInTheDocument();
     expect(screen.getByText('What\'s inside')).toBeInTheDocument();
-    expect(screen.getAllByAltText(offers[0].title).length).toBe(GALLERY_DISPLAY_COUNT);
+    expect(screen.getAllByAltText(offers[0].title).length).toBe(DisplayCount.Gallery);
     expect(screen.getByTestId('map')).toBeInTheDocument();
     nearPlacesOffers.forEach((offer) => {
       expect(screen.getByText(offer.title)).toBeInTheDocument();
