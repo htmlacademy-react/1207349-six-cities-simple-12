@@ -52,6 +52,11 @@ export enum DisplayCount {
   Reviews = 10,
 }
 
+export enum CommentLength {
+  Min = 50,
+  Max = 300,
+}
+
 export const RATING_LABELS: string[] = ['perfect', 'good', 'not bad', 'badly', 'terribly'];
 
 export const city: {[key: string]: City} = {
